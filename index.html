@@ -1117,6 +1117,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      background: #111; /* évite le flash blanc/transparent pendant le chargement */
       display: block;
       pointer-events: none; /* let parent handle clicks */
     }
@@ -2665,7 +2666,7 @@
         <div class="exp-featured reveal stagger-1">
           <div class="exp-featured-inner story-trigger" data-story="0">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip_ext.mp4" type="video/mp4" />
+              <source data-src="media/clip_ext.mp4" type="video/mp4" />
             </video>
             <div class="exp-overlay">
                             <span class="exp-tag">Nettoyage extérieur</span>
@@ -2677,7 +2678,7 @@
         <div class="exp-grid">
           <div class="exp-clip story-trigger reveal stagger-2" data-story="1">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip3.mp4" type="video/mp4" />
+              <source data-src="media/clip3.mp4" type="video/mp4" />
             </video>
             <div class="exp-overlay">
                             <span class="exp-tag exp-tag--desktop">Polissage</span>
@@ -2686,19 +2687,19 @@
           </div>
           <div class="exp-clip story-trigger reveal stagger-3" data-story="2">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip7.mp4" type="video/mp4" />
+              <source data-src="media/clip7.mp4" type="video/mp4" />
             </video>
             <div class="exp-overlay"><div class="exp-play-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg></div><span class="exp-tag">Intérieur</span></div>
           </div>
           <div class="exp-clip story-trigger reveal stagger-4" data-story="3">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip2.mp4" type="video/mp4" />
+              <source data-src="media/clip2.mp4" type="video/mp4" />
             </video>
             <div class="exp-overlay"><div class="exp-play-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg></div></div>
           </div>
           <div class="exp-clip story-trigger reveal stagger-5" data-story="4">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip9.mp4" type="video/mp4" />
+              <source data-src="media/clip9.mp4" type="video/mp4" />
             </video>
             <div class="exp-overlay"><div class="exp-play-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg></div></div>
           </div>
@@ -2711,43 +2712,43 @@
         <div class="exp-strip">
           <div class="exp-strip-item story-trigger" data-story="5">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip4.mp4" type="video/mp4" />
+              <source data-src="media/clip4.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="exp-strip-item story-trigger" data-story="6">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip5.mp4" type="video/mp4" />
+              <source data-src="media/clip5.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="exp-strip-item story-trigger" data-story="7">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip6.mp4" type="video/mp4" />
+              <source data-src="media/clip6.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="exp-strip-item story-trigger" data-story="8">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip8.mp4" type="video/mp4" />
+              <source data-src="media/clip8.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="exp-strip-item story-trigger" data-story="9">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip10.mp4" type="video/mp4" />
+              <source data-src="media/clip10.mp4" type="video/mp4" />
             </video>
           </div>
           <!-- Duplicate for seamless loop (no story trigger) -->
           <div class="exp-strip-item" aria-hidden="true">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip4.mp4" type="video/mp4" />
+              <source data-src="media/clip4.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="exp-strip-item" aria-hidden="true">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip5.mp4" type="video/mp4" />
+              <source data-src="media/clip5.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="exp-strip-item" aria-hidden="true">
             <video class="exp-video" muted loop playsinline preload="none">
-              <source src="media/clip6.mp4" type="video/mp4" />
+              <source data-src="media/clip6.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -2773,14 +2774,14 @@
           <!-- Avant (base) -->
           <div class="ba-before">
             <video muted loop playsinline preload="none">
-              <source src="media/avant.mp4" type="video/mp4" />
+              <source data-src="media/avant.mp4" type="video/mp4" />
             </video>
           </div>
 
           <!-- Après (clippé) -->
           <div class="ba-after">
             <video muted loop playsinline preload="none">
-              <source src="media/apres.mp4" type="video/mp4" />
+              <source data-src="media/apres.mp4" type="video/mp4" />
             </video>
           </div>
 
@@ -3337,33 +3338,63 @@
       }, 1800);
     })();
 
-    /* ── Video play/pause via IntersectionObserver (performance) ── */
+    /* ── Video lazy-load + play/pause via IntersectionObserver (mobile perf) ── */
     (function() {
+      // Detect slow connection or data-saver mode
+      const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const isSlow = conn && (conn.saveData || ['slow-2g','2g','3g'].includes(conn.effectiveType));
+
+      // Lazy-load: set src from data-src only when needed, then load()
+      function activateVideo(v) {
+        const sources = v.querySelectorAll('source[data-src]');
+        if (sources.length && !v.dataset.loaded) {
+          sources.forEach(s => { s.src = s.dataset.src; });
+          v.load();
+          v.dataset.loaded = '1';
+        }
+      }
+
       // Featured + clip videos (main grid) + avant/après
+      // rootMargin: start loading 300px before entering viewport so it's ready on arrival
       const mainVideos = document.querySelectorAll(
         '.exp-featured-inner .exp-video, .exp-clip .exp-video, .ba-before video, .ba-after video'
       );
       const mainObs = new IntersectionObserver(entries => {
         entries.forEach(e => {
           const v = e.target;
-          if (e.isIntersecting) { v.play().catch(() => {}); }
-          else { v.pause(); }
+          if (e.isIntersecting) {
+            activateVideo(v);
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.1, rootMargin: '300px 0px' });
       mainVideos.forEach(v => mainObs.observe(v));
 
-      // Strip videos — observe the strip section, not individual videos
+      // Strip videos — observe the strip section
+      // On slow connection: don't autoplay strip (saves bandwidth), just lazy-load on demand
       const stripWrap = document.querySelector('.exp-strip-wrap');
       const stripVideos = document.querySelectorAll('.exp-strip .exp-video');
       if (stripWrap && stripVideos.length) {
         const stripObs = new IntersectionObserver(entries => {
           entries.forEach(e => {
             stripVideos.forEach(v => {
-              if (e.isIntersecting) { v.play().catch(() => {}); }
-              else { v.pause(); }
+              if (e.isIntersecting) {
+                if (!isSlow) {
+                  activateVideo(v);
+                  v.play().catch(() => {});
+                } else {
+                  // On slow connection: load only the first 3 strip videos
+                  const idx = [...stripVideos].indexOf(v);
+                  if (idx < 3) { activateVideo(v); v.play().catch(() => {}); }
+                }
+              } else {
+                v.pause();
+              }
             });
           });
-        }, { threshold: 0.05 });
+        }, { threshold: 0.05, rootMargin: '150px 0px' });
         stripObs.observe(stripWrap);
       }
     })();
