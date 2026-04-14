@@ -3948,17 +3948,33 @@
   (function() {
     const veil = document.getElementById('pageVeil');
     if (!veil) return;
-    // Exit animation on page load (vient d'une autre page)
-    if (sessionStorage.getItem('transitioning')) {
-      sessionStorage.removeItem('transitioning');
+
+    function exitVeil() {
       veil.style.transition = 'none';
       veil.classList.add('enter');
       requestAnimationFrame(() => requestAnimationFrame(() => {
         veil.style.transition = 'clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1)';
         veil.classList.replace('enter', 'exit');
-        setTimeout(() => veil.classList.remove('exit'), 750);
+        setTimeout(() => { veil.classList.remove('exit'); veil.style.pointerEvents = 'none'; }, 750);
       }));
     }
+
+    // Exit animation on page load (vient d'une autre page)
+    if (sessionStorage.getItem('transitioning')) {
+      sessionStorage.removeItem('transitioning');
+      exitVeil();
+    }
+
+    // Fix bfcache (retour arrière mobile)
+    window.addEventListener('pageshow', function(e) {
+      if (!e.persisted) return;
+      veil.style.transition = 'none';
+      veil.classList.remove('enter', 'exit');
+      veil.style.pointerEvents = 'none';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        veil.style.transition = 'clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1)';
+      }));
+    });
     // Fonction goTo avec transition
     window.goTo = function(href) {
       sessionStorage.setItem('transitioning', '1');
