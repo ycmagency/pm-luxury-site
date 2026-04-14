@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Obtenez votre estimation gratuite — PM Luxury, service de nettoyage automobile premium à domicile dans Lanaudière et Montréal." />
+  <title>Estimation gratuite — PM Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── VARIABLES ─────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0B0B0B;
+      --bg-section:    #141414;
+      --bg-card:       #1A1A1A;
+      --border:        #2A2A2A;
+      --text-primary:  #EAEAEA;
+      --text-muted:    #888888;
+      --text-subtle:   #555555;
+      --silver:        #C0C0C0;
+      --blue:          #4A6FA5;
+      --blue-dark:     #2F4F78;
+      --blue-glow:     rgba(74, 111, 165, 0.18);
+      --radius-sm:     6px;
+      --radius-md:     12px;
+      --radius-lg:     20px;
+      --transition:    0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-fast: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-spring:   cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    input, select, textarea { font-family: inherit; }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.15; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── HEADER ── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-img { height: 40px; width: auto; display: block; object-fit: contain; }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+    }
+    .logo-text span { color: var(--blue); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      transition: color 0.25s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      padding-top: 65px;
+    }
+
+    /* ── LEFT PANEL ── */
+    .left-panel {
+      background: var(--bg-section);
+      border-right: 1px solid var(--border);
+      padding: 72px 60px 72px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,79,120,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .left-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .left-eyebrow::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--blue);
+    }
+
+    .left-title {
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+      line-height: 1.15;
+    }
+    .left-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #C0C0C0, #EAEAEA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .left-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 340px;
+    }
+
+    .left-guarantees {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .guarantee-icon {
+      width: 30px; height: 30px;
+      border-radius: 6px;
+      background: var(--blue-glow);
+      border: 1px solid rgba(74,111,165,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .guarantee-icon svg { width: 14px; height: 14px; }
+    .guarantee-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .guarantee-text span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .left-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin-bottom: 28px;
+    }
+
+    .left-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .contact-item svg { color: var(--blue); width: 14px; height: 14px; flex-shrink: 0; }
+    .contact-item a { transition: color 0.2s; }
+    .contact-item a:hover { color: var(--text-primary); }
+
+    /* ── RIGHT PANEL (FORM) ── */
+    .right-panel {
+      padding: 72px 48px 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .form-subheading {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .form-group.full { grid-column: span 2; }
+    .form-group:last-of-type { margin-bottom: 0; }
+
+    .form-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-input {
+      width: 100%;
+      padding: 13px 16px;
+      background: #111111;
+      border: 1px solid var(--border);
+      border-left: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.3s var(--ease-spring),
+                  border-left-color 0.3s var(--ease-spring),
+                  box-shadow 0.3s var(--ease-spring),
+                  background 0.3s var(--ease-spring),
+                  transform 0.2s var(--ease-spring);
+    }
+    .form-input::placeholder { color: var(--text-subtle); }
+    .form-input:focus {
+      border-color: rgba(74,111,165,0.5);
+      border-left-color: var(--blue);
+      background: #131518;
+      box-shadow: 0 0 0 3px rgba(74,111,165,0.1), 0 2px 16px rgba(0,0,0,0.2);
+      transform: translateY(-1px);
+    }
+    textarea.form-input { resize: vertical; min-height: 96px; }
+
+    /* ── Custom Select ── */
+    .custom-select { position: relative; }
+    .cs-trigger {
+      width: 100%;
+      padding: 13px 42px 13px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s var(--ease-spring);
+      user-select: none;
+    }
+    .cs-trigger.placeholder { color: var(--text-subtle); }
+    .cs-trigger:hover { border-color: rgba(74,111,165,0.45); transform: translateY(-1px); }
+    .cs-trigger.open {
+      border-color: rgba(74,111,165,0.5);
+      border-left-color: var(--blue);
+      border-left-width: 2px;
+      box-shadow: 0 0 0 3px rgba(74,111,165,0.12), 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .cs-arrow {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      color: #888;
+      transition: transform 0.3s var(--ease-spring), color 0.25s;
+    }
+    .cs-trigger.open .cs-arrow { transform: rotate(180deg); color: var(--blue); }
+
+    .cs-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      background: #1E1E1E;
+      border: 1px solid rgba(74,111,165,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 999;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(-8px) scaleY(0.95);
+      transform-origin: top center;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.25s var(--ease-spring);
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .cs-dropdown::-webkit-scrollbar { width: 4px; }
+    .cs-dropdown::-webkit-scrollbar-track { background: transparent; }
+    .cs-dropdown::-webkit-scrollbar-thumb { background: rgba(74,111,165,0.35); border-radius: 2px; }
+    .cs-dropdown.open {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+      pointer-events: all;
+    }
+
+    .cs-group-label {
+      padding: 8px 14px 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      opacity: 0.7;
+    }
+    .cs-option {
+      padding: 11px 16px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: background 0.15s, color 0.15s, padding-left 0.2s;
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+    .cs-dropdown.open .cs-option {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .cs-option:hover {
+      background: rgba(74,111,165,0.12);
+      color: var(--text-primary);
+      padding-left: 20px;
+    }
+    .cs-option.selected {
+      color: var(--blue);
+      background: rgba(74,111,165,0.08);
+    }
+    .cs-option .cs-check {
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.2s, transform 0.25s var(--ease-spring);
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .cs-option.selected .cs-check { opacity: 1; transform: scale(1); }
+    .cs-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 4px 0; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--blue);
+      cursor: pointer;
+      transition: background 0.3s var(--ease-spring),
+                  box-shadow 0.3s var(--ease-spring),
+                  transform 0.3s var(--ease-spring),
+                  letter-spacing 0.3s var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.13), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.55s var(--ease-spring);
+      pointer-events: none;
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 0 0 1px rgba(74,111,165,0.4),
+                  0 8px 32px rgba(74,111,165,0.45),
+                  0 0 60px rgba(74,111,165,0.12);
+      transform: translateY(-3px);
+      letter-spacing: 0.07em;
+    }
+    .btn-primary:hover::before { left: 150%; }
+    .btn-primary:active { transform: translateY(-1px); }
+
+    .form-submit {
+      margin-top: 28px;
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      font-size: 0.92rem;
+      animation: btnFloat 3s ease-in-out infinite;
+    }
+    @keyframes btnFloat {
+      0%,100% { transform: translateY(0);    box-shadow: 0 6px 24px rgba(74,111,165,0.35); }
+      50%      { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(74,111,165,0.55); }
+    }
+    .form-submit:hover { animation-play-state: paused; }
+    .form-submit:active { animation: none; transform: translateY(-1px); }
+    .form-note {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.73rem;
+      color: var(--text-subtle);
+    }
+
+
+    /* ── BOOKING ERROR STATE ── */
+    .booking-error-wrap {
+      text-align: center; padding: 44px 20px 36px;
+      position: relative;
+    }
+    .berr-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(220,53,69,0.08); border: 1.5px solid rgba(220,53,69,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px; color: #e05c6a;
+      box-shadow: 0 0 0 10px rgba(220,53,69,0.05), 0 8px 28px rgba(220,53,69,0.15);
+      animation: errIconIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+    }
+    @keyframes errIconIn {
+      from { transform: scale(0.5) rotate(10deg); opacity: 0; }
+      60%  { transform: scale(1.15) rotate(-3deg); }
+      to   { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    .berr-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #e05c6a; background: rgba(220,53,69,0.08);
+      border: 1px solid rgba(220,53,69,0.22);
+      padding: 4px 14px; border-radius: 50px; margin-bottom: 16px;
+      opacity: 0; animation: fadeSlideUp 0.4s ease 0.5s forwards;
+    }
+    .berr-title {
+      font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800;
+      margin-bottom: 12px; line-height: 1.35;
+      opacity: 0; animation: fadeSlideUp 0.4s ease 0.65s forwards;
+    }
+    .berr-desc {
+      font-size: 0.875rem; color: var(--text-muted); line-height: 1.7;
+      margin-bottom: 28px;
+      opacity: 0; animation: fadeSlideUp 0.4s ease 0.78s forwards;
+    }
+    .berr-actions {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeSlideUp 0.4s ease 0.9s forwards;
+    }
+    .berr-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 14px 24px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+      cursor: pointer;
+    }
+    .berr-btn:hover { transform: translateY(-3px); }
+    .berr-btn--primary {
+      background: linear-gradient(135deg, #5B8DD9, #3A6BC4);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(58,107,196,0.45);
+    }
+    .berr-btn--primary:hover { box-shadow: 0 10px 30px rgba(58,107,196,0.65); }
+    .berr-btn--secondary {
+      background: transparent; color: var(--silver);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .berr-btn--secondary:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+    .berr-retry {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer;
+      transition: color 0.2s, transform 0.2s; padding: 0;
+      opacity: 0; animation: fadeSlideUp 0.4s ease 1.05s forwards;
+    }
+    .berr-retry:hover { color: var(--text-primary); transform: translateX(-2px); }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 52px 24px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background glow orb — centered on icon */
+    .success-orb {
+      position: absolute; top: 94px; left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 280px; height: 280px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(74,111,165,0.16) 0%, transparent 70%);
+      pointer-events: none;
+      animation: orbPulseS 3s ease-in-out infinite;
+    }
+    @keyframes orbPulseS {
+      0%,100% { opacity: 0.7; transform: translateX(-50%) translateY(-50%) scale(1); }
+      50%      { opacity: 1;   transform: translateX(-50%) translateY(-50%) scale(1.15); }
+    }
+
+    /* Expanding rings — anchored to icon center */
+    .success-rings {
+      position: absolute; top: 94px; left: 50%;
+      width: 0; height: 0;
+      pointer-events: none; z-index: 0;
+    }
+    .success-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(74,111,165,0.35);
+      top: 0; left: 0; transform: translate(-50%,-50%) scale(0);
+      opacity: 0;
+    }
+    .ring-1 { width: 100px; height: 100px; animation: ringExpand 2.4s ease-out 0.6s infinite; }
+    .ring-2 { width: 155px; height: 155px; animation: ringExpand 2.4s ease-out 1.0s infinite; }
+    .ring-3 { width: 210px; height: 210px; animation: ringExpand 2.4s ease-out 1.4s infinite; }
+    @keyframes ringExpand {
+      0%   { transform: translate(-50%,-50%) scale(0.3); opacity: 0.6; }
+      100% { transform: translate(-50%,-50%) scale(1);   opacity: 0; }
+    }
+
+    /* Icon */
+    .form-success-icon {
+      width: 84px; height: 84px;
+      margin: 0 auto 28px;
+      background: linear-gradient(135deg, rgba(74,111,165,0.2), rgba(42,83,158,0.1));
+      border: 1.5px solid rgba(74,111,165,0.45);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #6BAAE8;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 0 8px rgba(74,111,165,0.08), 0 8px 32px rgba(74,111,165,0.25);
+    }
+    .check-path {
+      stroke-dasharray: 30;
+      stroke-dashoffset: 30;
+      animation: drawCheck 0.5s cubic-bezier(0.16,1,0.3,1) 0.55s forwards;
+    }
+    @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+    /* Badge */
+    .success-badge {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue);
+      background: rgba(74,111,165,0.1); border: 1px solid rgba(74,111,165,0.25);
+      padding: 4px 14px; border-radius: 50px; margin-bottom: 16px;
+      position: relative; z-index: 1;
+      opacity: 0; animation: fadeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
+    }
+
+    /* Title */
+    .success-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;
+      position: relative; z-index: 1;
+      opacity: 0; animation: fadeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.85s forwards;
+    }
+
+    /* Description */
+    .success-desc {
+      font-size: 0.875rem; color: var(--text-muted); line-height: 1.7;
+      margin-bottom: 20px; position: relative; z-index: 1;
+      opacity: 0; animation: fadeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 1s forwards;
+    }
+
+    /* RDV detail pill */
+    .success-details {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(74,111,165,0.08); border: 1px solid rgba(74,111,165,0.2);
+      border-radius: 50px; padding: 10px 22px;
+      font-size: 0.85rem; font-weight: 600; color: var(--silver);
+      margin-bottom: 32px; position: relative; z-index: 1;
+      opacity: 0; animation: fadeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 1.1s forwards;
+    }
+    .success-details:empty { display: none; }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Button */
+    .success-btn {
+      margin: 0 auto;
+      display: inline-flex !important;
+      position: relative; z-index: 1;
+      opacity: 0; animation: fadeSlideUp 0.5s cubic-bezier(0.16,1,0.3,1) 1.25s forwards,
+                             btnGlowS 2.5s ease-in-out 2s infinite;
+    }
+    @keyframes btnGlowS {
+      0%,100% { box-shadow: 0 4px 24px rgba(58,107,196,0.5), 0 1px 0 rgba(255,255,255,0.15) inset; }
+      50%      { box-shadow: 0 8px 40px rgba(58,107,196,0.85), 0 1px 0 rgba(255,255,255,0.2) inset; }
+    }
+
+    /* ── FOOTER MINI ── */
+    .page-footer {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+    }
+    .page-footer p {
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+    }
+    .page-footer a { color: var(--text-muted); transition: color 0.2s; }
+    .page-footer a:hover { color: var(--text-primary); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .left-panel {
+        padding: 60px 32px 48px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .left-panel::before { display: none; }
+      .left-desc { max-width: 100%; }
+      .right-panel { padding: 48px 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 18px; }
+      .left-panel { padding: 48px 18px 40px; }
+      .right-panel { padding: 40px 18px 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+    }
+
+    /* ── Mobile scroll hint ── */
+    .mobile-scroll-hint {
+      display: none;
+    }
+    @media (max-width: 900px) {
+      .mobile-scroll-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-top: 36px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+      .msh-label {
+        font-size: 0.78rem;
+        color: var(--text-subtle);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .msh-arrows {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+        margin: 2px 0 6px;
+      }
+      .msh-arrows svg {
+        width: 22px; height: 22px;
+        color: var(--blue);
+        opacity: 0;
+        animation: mshArrow 1.8s ease-in-out infinite;
+      }
+      .msh-arrows svg:nth-child(1) { animation-delay: 0s; }
+      .msh-arrows svg:nth-child(2) { animation-delay: 0.2s; }
+      .msh-arrows svg:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes mshArrow {
+        0%   { opacity: 0; transform: translateY(-6px); }
+        40%  { opacity: 1; transform: translateY(0); }
+        70%  { opacity: 0.6; transform: translateY(4px); }
+        100% { opacity: 0; transform: translateY(8px); }
+      }
+      .msh-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border: 1px solid rgba(74,111,165,0.35);
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--blue);
+        background: rgba(74,111,165,0.08);
+        letter-spacing: 0.04em;
+        animation: mshBtnFloat 2.8s ease-in-out infinite;
+        margin-top: 4px;
+      }
+      @keyframes mshBtnFloat {
+        0%, 100% { transform: translateY(0);    box-shadow: 0 4px 18px rgba(74,111,165,0.2); }
+        50%       { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(74,111,165,0.4); }
+      }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(5px);
+      transition: opacity 0.85s var(--ease-spring),
+                  transform 0.85s var(--ease-spring),
+                  filter 0.65s var(--ease-spring);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+    .stagger-1 { transition-delay: 0.08s !important; }
+    .stagger-2 { transition-delay: 0.16s !important; }
+    .stagger-3 { transition-delay: 0.24s !important; }
+    .stagger-4 { transition-delay: 0.32s !important; }
+
+    /* ── Left panel animated glow ── */
+    .left-panel::after {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,111,165,0.08) 0%, transparent 70%);
+      animation: floatOrbE 9s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes floatOrbE {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50%       { transform: translateY(-18px) scale(1.1); opacity: 1; }
+    }
+
+    /* ── Success icon animation ── */
+    .form-success-icon {
+      animation: successPop 0.5s var(--ease-spring) both;
+    }
+    @keyframes successPop {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Navigation">
+        <a href="index.html" class="logo" aria-label="PM Luxury — Retour à l'accueil">
+          <img src="media/logo.png" alt="PM Luxury" class="logo-img" />
+        </a>
+        <a href="index.html" class="back-link" aria-label="Retour à l'accueil">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Retour
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE -->
+  <div class="page-wrap">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <p class="left-eyebrow reveal">Devis gratuit</p>
+      <h1 class="left-title reveal stagger-1">
+        Un véhicule impeccable.<br />
+        <em>On vient chez vous.</em>
+      </h1>
+      <p class="left-desc reveal stagger-2">
+        Remplissez le formulaire — nous vous contactons sous 24h
+        avec un devis personnalisé. Sans engagement, sans déplacement de votre part.
+      </p>
+
+      <div class="left-guarantees" role="list">
+        <div class="guarantee-item reveal stagger-2" role="listitem">
+          <div class="guarantee-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="guarantee-text">
+            <strong>Réponse sous 24 heures</strong>
+            <span>Nous vous rappelons rapidement avec un devis clair.</span>
+          </div>
+        </div>
+        <div class="guarantee-item reveal stagger-3" role="listitem">
+          <div class="guarantee-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          </div>
+          <div class="guarantee-text">
+            <strong>Déplacement à domicile</strong>
+            <span>Lanaudière, Montréal et alentours — on se déplace.</span>
+          </div>
+        </div>
+        <div class="guarantee-item reveal stagger-4" role="listitem">
+          <div class="guarantee-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7L2 9l7-1z"/></svg>
+          </div>
+          <div class="guarantee-text">
+            <strong>Résultat professionnel garanti</strong>
+            <span>Produits premium, techniciens expérimentés.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="left-divider"></div>
+
+      <address class="left-contact" style="font-style:normal">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+14385066233">+1 438 506 6233</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <a href="mailto:propre.mobilefx@gmail.com">propre.mobilefx@gmail.com</a>
+        </div>
+      </address>
+
+      <!-- Mobile scroll hint -->
+      <div class="mobile-scroll-hint" aria-hidden="true">
+        <span class="msh-label">Remplissez le formulaire ci-dessous</span>
+        <div class="msh-arrows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="msh-btn-ghost">
+          Envoyer ma demande
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL (FORM) -->
+    <div class="right-panel">
+      <!-- Step indicator -->
+      <div class="step-indicator">
+        <div class="step-item active" id="step-dot-1">
+          <div class="step-dot">1</div>
+          <span>Vos informations</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" id="step-dot-2">
+          <div class="step-dot">2</div>
+          <span>Choisir une date</span>
+        </div>
+      </div>
+
+      <h2 class="form-heading reveal" id="form-title">Vos informations</h2>
+      <p class="form-subheading reveal stagger-1" id="form-subtitle">Tous les champs marqués * sont obligatoires.</p>
+
+      <form id="estimationForm" novalidate aria-label="Formulaire de demande d'estimation">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prenom">Prénom <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="text" id="prenom" name="prenom"
+              placeholder="Jean" autocomplete="given-name" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nom">Nom</label>
+            <input class="form-input" type="text" id="nom" name="nom"
+              placeholder="Tremblay" autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email">Email <span aria-hidden="true">*</span></label>
+            <input class="form-input" type="email" id="email" name="email"
+              placeholder="jean@email.com" autocomplete="email" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telephone">Téléphone</label>
+            <input class="form-input" type="tel" id="telephone" name="telephone"
+              placeholder="514 000-0000" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Ville <span aria-hidden="true">*</span></label>
+            <input type="hidden" id="ville" name="ville" required />
+            <div class="custom-select" id="cs-ville">
+              <button type="button" class="cs-trigger placeholder" aria-haspopup="listbox" aria-expanded="false">
+                <span class="cs-value">Sélectionner</span>
+                <svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="cs-dropdown" role="listbox">
+                <div class="cs-group-label">Lanaudière</div>
+                <div class="cs-option" role="option" data-value="Terrebonne">Terrebonne <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-option" role="option" data-value="Repentigny">Repentigny <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-option" role="option" data-value="Joliette">Joliette <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-option" role="option" data-value="L'Assomption">L'Assomption <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-option" role="option" data-value="Mascouche">Mascouche <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-divider"></div>
+                <div class="cs-group-label">Montréal</div>
+                <div class="cs-option" role="option" data-value="Montréal — Nord">Montréal — Nord <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-option" role="option" data-value="Montréal — Est">Montréal — Est <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-option" role="option" data-value="Laval">Laval <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="cs-divider"></div>
+                <div class="cs-option" role="option" data-value="Autre région">Autre région <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service souhaité</label>
+            <input type="hidden" id="service" name="service" />
+            <div class="custom-select" id="cs-service">
+              <button type="button" class="cs-trigger placeholder" aria-haspopup="listbox" aria-expanded="false">
+                <span class="cs-value">Choisir un service</span>
+                <svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="cs-dropdown" role="listbox">
+                <div class="cs-option" role="option" data-value="Traitement régulier — 70$ à 90$">
+                  <span style="display:flex;flex-direction:column;gap:2px">
+                    <span style="color:var(--text-primary);font-weight:600">Traitement régulier</span>
+                    <span style="font-size:0.75rem;color:var(--text-muted)">Berline 70$ · SUV 80$ · Pick-up 90$</span>
+                  </span>
+                  <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <div class="cs-option" role="option" data-value="Traitement complet — 150$ à 170$">
+                  <span style="display:flex;flex-direction:column;gap:2px">
+                    <span style="color:var(--text-primary);font-weight:600">Traitement complet</span>
+                    <span style="font-size:0.75rem;color:var(--text-muted)">Berline 150$ · SUV 160$ · Pick-up 170$</span>
+                  </span>
+                  <svg class="cs-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vehicule">Votre véhicule <span aria-hidden="true">*</span></label>
+          <input class="form-input" type="text" id="vehicule" name="vehicule"
+            placeholder="Ex: Toyota RAV4 2022, berline, SUV, pickup..." required aria-required="true" />
+        </div>
+
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="adresse">Adresse résidentielle *</label>
+          <input class="form-input" type="text" id="adresse" name="adresse"
+            placeholder="Ex: 123 rue des Érables, Montréal, QC" required aria-required="true" />
+        </div>
+
+        <button type="submit" class="btn-primary form-submit" aria-label="Continuer vers le calendrier">
+          Continuer
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <p class="form-note">Vos informations sont confidentielles et ne seront jamais partagées.</p>
+      </form>
+
+      <!-- STEP 2: Calendar -->
+      <div id="calendarStep" style="display:none;">
+        <div class="calendar-back" id="calBack">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Retour
+        </div>
+
+        <div class="calendar-wrap">
+          <div class="calendar-header">
+            <button type="button" class="cal-nav" id="calPrev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="cal-month-label" id="calMonthLabel"></span>
+            <button type="button" class="cal-nav" id="calNext">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="cal-days-header">
+            <span>Dim</span><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+
+        <div class="time-section" id="timeSection" style="display:none;">
+          <p class="time-label" id="timeLabel"></p>
+          <div class="time-slots" id="timeSlots"></div>
+        </div>
+
+        <input type="hidden" id="rdv-date" name="rdv_date" />
+        <input type="hidden" id="rdv-time" name="rdv_time" />
+
+        <button type="button" class="btn-primary form-submit" id="confirmBtn" style="display:none;" aria-label="Confirmer le rendez-vous">
+          Confirmer le rendez-vous
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        </button>
+        <p class="form-note" id="cal-note" style="display:none;">Vous recevrez une confirmation par email ou téléphone.</p>
+      </div>
+
+      <!-- BOOKING ERROR STATE -->
+      <div id="bookingError" style="display:none;" role="alert" aria-live="polite" class="booking-error-wrap">
+        <div class="berr-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+        </div>
+        <div class="berr-badge">Réservation en ligne indisponible</div>
+        <h3 class="berr-title">La prise de RDV automatique<br>n'est pas encore activée.</h3>
+        <p class="berr-desc">Pas de panique — contactez-nous directement et nous vous confirmons votre créneau en quelques minutes.</p>
+        <div class="berr-actions">
+          <a href="tel:+14385066233" class="berr-btn berr-btn--primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Appeler maintenant
+          </a>
+          <a href="sms:+14385066233" class="berr-btn berr-btn--secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Envoyer un message
+          </a>
+        </div>
+        <button class="berr-retry" id="errorRetry">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15"/></svg>
+          Recommencer
+        </button>
+      </div>
+
+      <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
+        <!-- Glow orb background -->
+        <div class="success-orb" aria-hidden="true"></div>
+
+        <!-- Rings -->
+        <div class="success-rings" aria-hidden="true">
+          <div class="success-ring ring-1"></div>
+          <div class="success-ring ring-2"></div>
+          <div class="success-ring ring-3"></div>
+        </div>
+
+        <!-- Icon -->
+        <div class="form-success-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="check-path" d="M20 6L9 17l-5-5"/>
+          </svg>
+        </div>
+
+        <div class="success-badge">Demande envoyée</div>
+        <h3 class="success-title">Demande reçue !</h3>
+        <p class="success-desc">Votre demande de rendez-vous a bien été transmise.<br>Nous vous confirmons le créneau sous 24h par email ou téléphone.</p>
+
+        <div class="success-details" id="successDetails"></div>
+
+        <a href="index.html" class="btn-primary success-btn">
+          Retour à l'accueil
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER MINI -->
+  <footer class="page-footer">
+    <div class="container">
+      <p>
+        &copy; <span id="yr">2024</span> PM Luxury — Tous droits réservés.
+        <a href="index.html" style="margin-left:16px">Retour à l'accueil</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    'use strict';
+
+    /* Reveal on scroll */
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => obs.observe(el));
+
+    /* Trigger reveals immediately since page is short */
+    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 100);
+
+    /* ── Custom Select Logic ── */
+    document.querySelectorAll('.custom-select').forEach(cs => {
+      const trigger  = cs.querySelector('.cs-trigger');
+      const dropdown = cs.querySelector('.cs-dropdown');
+      const valueEl  = cs.querySelector('.cs-value');
+      const hidden   = cs.parentElement.querySelector('input[type="hidden"]');
+
+      function openSelect() {
+        trigger.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        dropdown.classList.add('open');
+        /* stagger options */
+        dropdown.querySelectorAll('.cs-option').forEach((opt, i) => {
+          opt.style.transitionDelay = (i * 35) + 'ms';
+        });
+      }
+      function closeSelect() {
+        trigger.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('open');
+        dropdown.querySelectorAll('.cs-option').forEach(opt => { opt.style.transitionDelay = '0ms'; });
+      }
+      function toggleSelect() {
+        dropdown.classList.contains('open') ? closeSelect() : openSelect();
+      }
+
+      trigger.addEventListener('click', e => { e.stopPropagation(); toggleSelect(); });
+
+      dropdown.querySelectorAll('.cs-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          const val = opt.dataset.value;
+          /* update hidden input */
+          hidden.value = val;
+          /* update trigger label */
+          valueEl.textContent = val;
+          trigger.classList.remove('placeholder');
+          /* mark selected */
+          dropdown.querySelectorAll('.cs-option').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          /* ripple flash */
+          opt.style.background = 'rgba(74,111,165,0.22)';
+          setTimeout(() => { opt.style.background = ''; }, 300);
+          closeSelect();
+        });
+      });
+    });
+
+    /* Close all selects on outside click */
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.custom-select .cs-dropdown.open').forEach(d => {
+        const cs = d.closest('.custom-select');
+        cs.querySelector('.cs-trigger').classList.remove('open');
+        cs.querySelector('.cs-trigger').setAttribute('aria-expanded', 'false');
+        d.classList.remove('open');
+      });
+    });
+
+    /* Form submit → go to step 2 calendar */
+    const form = document.getElementById('estimationForm');
+    const success = document.getElementById('formSuccess');
+    const calendarStep = document.getElementById('calendarStep');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          valid = false;
+          field.style.borderColor = '#C0392B';
+          field.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.15)';
+          field.addEventListener('input', function once() {
+            this.style.borderColor = '';
+            this.style.boxShadow = '';
+            this.removeEventListener('input', once);
+          });
+        }
+      });
+      if (!valid) return;
+      /* Go to step 2 */
+      form.style.opacity = '0';
+      form.style.transform = 'translateX(-24px)';
+      form.style.transition = 'opacity 0.3s, transform 0.3s';
+      setTimeout(() => {
+        form.style.display = 'none';
+        calendarStep.style.display = 'block';
+        calendarStep.style.opacity = '0';
+        calendarStep.style.transform = 'translateX(24px)';
+        calendarStep.style.transition = 'opacity 0.35s, transform 0.35s';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          calendarStep.style.opacity = '1';
+          calendarStep.style.transform = 'translateX(0)';
+        }));
+        /* update step indicator */
+        document.getElementById('step-dot-1').classList.remove('active');
+        document.getElementById('step-dot-1').classList.add('done');
+        document.getElementById('step-dot-2').classList.add('active');
+        document.querySelector('.step-line').classList.add('filled');
+        document.getElementById('form-title').textContent = 'Choisir une date';
+        document.getElementById('form-subtitle').textContent = 'Sélectionnez un jour et un créneau disponible.';
+        initCalendar();
+        window.scrollTo({ top: document.querySelector('.right-panel').offsetTop - 80, behavior: 'smooth' });
+      }, 320);
+    });
+
+    /* Back button */
+    document.getElementById('calBack').addEventListener('click', () => {
+      calendarStep.style.opacity = '0';
+      calendarStep.style.transform = 'translateX(24px)';
+      setTimeout(() => {
+        calendarStep.style.display = 'none';
+        form.style.display = '';
+        form.style.opacity = '0';
+        form.style.transform = 'translateX(-24px)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          form.style.opacity = '1';
+          form.style.transform = 'translateX(0)';
+        }));
+        document.getElementById('step-dot-1').classList.add('active');
+        document.getElementById('step-dot-1').classList.remove('done');
+        document.getElementById('step-dot-2').classList.remove('active');
+        document.querySelector('.step-line').classList.remove('filled');
+        document.getElementById('form-title').textContent = 'Vos informations';
+        document.getElementById('form-subtitle').textContent = 'Tous les champs marqués * sont obligatoires.';
+      }, 300);
+    });
+
+    /* ── CALENDAR ── */
+    let calYear, calMonth, selectedDate = null, selectedTime = null;
+
+    function initCalendar() {
+      const now = new Date();
+      calYear = now.getFullYear();
+      calMonth = now.getMonth();
+      renderCalendar();
+    }
+
+    const MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    const DAY_NAMES = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+
+    // À partir du 2 juin 2026 : dispo 6j/7 (dimanche fermé)
+    const EXTENDED_START = new Date(2026, 5, 2); // June 2, 2026
+
+    // Créneaux selon le jour
+    function getSlotsForDate(date) {
+      const dow = date.getDay();
+      const isExtended = date >= EXTENDED_START;
+      if (isExtended) {
+        // 6j/7 à partir du 2 juin — horaires larges
+        return ['7h00','8h30','10h00','11h30','13h00','14h30','16h00','17h30'];
+      }
+      if (dow === 1 || dow === 5) return ['18h30','19h30']; // Lundi & Vendredi (après-midi/soir)
+      if (dow === 6) return ['7h00','8h30','10h00','11h30','13h00','14h30','16h00','17h30']; // Samedi 7h–18h
+      return [];
+    }
+
+    function isDateAvailable(date) {
+      const dow = date.getDay();
+      const isExtended = date >= EXTENDED_START;
+      if (isExtended) return dow !== 0; // Dimanche fermé
+      return dow === 1 || dow === 5 || dow === 6; // Lun, Ven, Sam
+    }
+
+    function renderCalendar() {
+      const label = document.getElementById('calMonthLabel');
+      const monthLabel = document.getElementById('calMonthLabel');
+      monthLabel.textContent = MONTHS_FR[calMonth] + ' ' + calYear;
+
+      const grid = document.getElementById('calGrid');
+      grid.innerHTML = '';
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const firstDay = new Date(calYear, calMonth, 1).getDay();
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+      let cellIndex = 0;
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        grid.appendChild(empty);
+        cellIndex++;
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'cal-day';
+        dayEl.textContent = d;
+        // staggered entrance delay
+        dayEl.style.animationDelay = (cellIndex * 18) + 'ms';
+        cellIndex++;
+
+        const date = new Date(calYear, calMonth, d);
+        date.setHours(0,0,0,0);
+        const isPast = date < today;
+        const available = isDateAvailable(date);
+
+        if (isPast || !available) {
+          dayEl.classList.add('disabled');
+        } else {
+          if (date.getTime() === today.getTime()) dayEl.classList.add('today');
+          if (selectedDate && date.getTime() === selectedDate.getTime()) dayEl.classList.add('selected');
+          dayEl.addEventListener('click', () => selectDate(date));
+        }
+        grid.appendChild(dayEl);
+      }
+    }
+
+    function selectDate(date) {
+      selectedDate = date;
+      selectedTime = null;
+      document.getElementById('rdv-date').value = date.toLocaleDateString('fr-CA');
+      document.getElementById('rdv-time').value = '';
+      renderCalendar();
+      showTimeSlots(date);
+      const cb = document.getElementById('confirmBtn');
+      cb.style.display = 'none';
+      cb.classList.remove('visible');
+      document.getElementById('cal-note').style.display = 'none';
+    }
+
+    function showTimeSlots(date) {
+      const section = document.getElementById('timeSection');
+      const label = document.getElementById('timeLabel');
+      const slotsDiv = document.getElementById('timeSlots');
+      label.textContent = DAY_NAMES[date.getDay()] + ' ' + date.getDate() + ' ' + MONTHS_FR[date.getMonth()];
+      slotsDiv.innerHTML = '';
+      const slots = getSlotsForDate(date);
+      slots.forEach((t, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'time-slot';
+        btn.textContent = t;
+        btn.style.animationDelay = (i * 60) + 'ms';
+        if (t === selectedTime) btn.classList.add('selected');
+        btn.addEventListener('click', () => {
+          selectedTime = t;
+          document.getElementById('rdv-time').value = t;
+          slotsDiv.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+          btn.classList.add('selected');
+          // Show confirm button with animation
+          const cb = document.getElementById('confirmBtn');
+          cb.style.display = '';
+          cb.classList.remove('visible');
+          void cb.offsetWidth; // reflow
+          cb.classList.add('visible');
+          document.getElementById('cal-note').style.display = '';
+        });
+        slotsDiv.appendChild(btn);
+      });
+      // re-trigger section animation
+      section.classList.remove('entering');
+      void section.offsetWidth;
+      section.classList.add('entering');
+      section.style.display = 'block';
+    }
+
+    document.getElementById('calPrev').addEventListener('click', () => {
+      const grid = document.getElementById('calGrid');
+      grid.classList.remove('slide-left','slide-right');
+      void grid.offsetWidth;
+      grid.classList.add('slide-right');
+      calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; }
+      renderCalendar();
+    });
+    document.getElementById('calNext').addEventListener('click', () => {
+      const grid = document.getElementById('calGrid');
+      grid.classList.remove('slide-left','slide-right');
+      void grid.offsetWidth;
+      grid.classList.add('slide-left');
+      calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; }
+      renderCalendar();
+    });
+
+    /* ── Intégration CRM Notion via Make.com ─────────────────────────────
+       Setup (2 min) :
+       1. make.com → créer un scénario gratuit
+       2. Trigger : Webhooks → Custom webhook → copier l'URL
+       3. Action  : Notion → Create a database item → base "CRM Propre Mobile"
+          Mapper : Nom←nom, Prénom←prenom, Email←email, Téléphone←telephone,
+                   Ville←ville, Service souhaité←service, Véhicule←vehicule,
+                   Adresse résidentielle←adresse,
+                   Date du rendez-vous←rdv_iso (format: YYYY-MM-DDTHH:MM:SS),
+                   Statut←"Nouveau"
+       4. Coller l'URL ci-dessous et remplacer COLLER_ICI
+       ─────────────────────────────────────────────────────────────────── */
+    const MAKE_WEBHOOK_URL = 'https://pm-luxury-backend-production.up.railway.app';
+
+    function showStepResult(type) {
+      calendarStep.style.opacity = '0';
+      calendarStep.style.transform = 'scale(0.97) translateY(-8px)';
+      calendarStep.style.transition = 'opacity 0.35s, transform 0.35s';
+      setTimeout(() => {
+        calendarStep.style.display = 'none';
+        const box = document.getElementById(type === 'success' ? 'formSuccess' : 'bookingError');
+        box.style.display = 'block';
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(20px) scale(0.96)';
+        box.style.transition = 'opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.45s cubic-bezier(0.16,1,0.3,1)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          box.style.opacity = '1';
+          box.style.transform = 'none';
+        }));
+        bars.forEach(b => b.classList.add('active'));
+      }, 360);
+    }
+
+    /* Confirm appointment → envoie au CRM Notion via Make.com */
+    document.getElementById('confirmBtn').addEventListener('click', () => {
+      const btn = document.getElementById('confirmBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>Envoi en cours...';
+
+      /* Collecter les données du formulaire */
+      const prenom    = document.getElementById('prenom').value.trim();
+      const nom       = document.getElementById('nom').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const telephone = document.getElementById('telephone').value.trim();
+      const ville     = document.getElementById('ville').value.trim();
+      const service   = document.getElementById('service').value.trim();
+      const vehicule  = document.getElementById('vehicule').value.trim();
+      const adresse   = document.getElementById('adresse').value.trim();
+      const rdvDate   = document.getElementById('rdv-date').value;      // YYYY-MM-DD
+      const rdvHeure  = document.getElementById('rdv-time').value;      // ex: 18h30
+
+      /* Convertir "18h30" → "18:30:00" pour ISO datetime */
+      const rdvHeureFmt = rdvHeure.replace('h', ':') + ':00';
+      const tzOff = -new Date().getTimezoneOffset();
+      const tzSign = tzOff >= 0 ? '+' : '-';
+      const tzH = String(Math.floor(Math.abs(tzOff) / 60)).padStart(2, '0');
+      const tzM = String(Math.abs(tzOff) % 60).padStart(2, '0');
+      const rdvISO = rdvDate + 'T' + rdvHeureFmt + tzSign + tzH + ':' + tzM; // ex: 2026-06-06T18:30:00-04:00
+
+      /* Remplir l'écran de succès */
+      const det = document.getElementById('successDetails');
+      if (det) {
+        det.innerHTML = `
+          <div style="display:grid;gap:10px;text-align:left;margin:24px 0 8px">
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 14px;background:rgba(74,111,165,0.08);border-radius:8px;border:1px solid rgba(74,111,165,0.18)">
+              <span style="color:var(--text-muted);font-size:0.8rem">Service</span>
+              <span style="font-weight:600;font-size:0.85rem;text-align:right">${service}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 14px;background:rgba(74,111,165,0.08);border-radius:8px;border:1px solid rgba(74,111,165,0.18)">
+              <span style="color:var(--text-muted);font-size:0.8rem">Date &amp; heure</span>
+              <span style="font-weight:600;font-size:0.85rem">${rdvDate} à ${rdvHeure}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 14px;background:rgba(74,111,165,0.08);border-radius:8px;border:1px solid rgba(74,111,165,0.18)">
+              <span style="color:var(--text-muted);font-size:0.8rem">Véhicule</span>
+              <span style="font-weight:600;font-size:0.85rem">${vehicule}</span>
+            </div>
+          </div>`;
+      }
+
+      /* Envoyer au webhook Make.com → Notion */
+      fetch(MAKE_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom,
+          prenom,
+          email,
+          telephone: telephone || '',
+          ville,
+          service,
+          vehicule,
+          adresse,
+          rdv_date:  rdvDate,
+          rdv_heure: rdvHeure,
+          rdv_iso:   rdvISO,
+        })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        showStepResult('success');
+      })
+      .catch(err => {
+        console.error('Webhook error:', err);
+        showStepResult('error');
+        btn.disabled = false;
+        btn.innerHTML = 'Confirmer le rendez-vous <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+      });
+    });
+
+    /* Retry button */
+    document.getElementById('errorRetry').addEventListener('click', () => {
+      const errorBox = document.getElementById('bookingError');
+      errorBox.style.opacity = '0';
+      errorBox.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        errorBox.style.display = 'none';
+        /* Reset calendar step */
+        const btn = document.getElementById('confirmBtn');
+        btn.disabled = false;
+        btn.innerHTML = 'Confirmer le rendez-vous <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+        btn.style.display = 'none';
+        btn.classList.remove('visible');
+        document.getElementById('cal-note').style.display = 'none';
+        document.getElementById('timeSection').style.display = 'none';
+        selectedDate = null; selectedTime = null;
+        renderCalendar();
+        calendarStep.style.opacity = '0';
+        calendarStep.style.transform = 'translateX(24px)';
+        calendarStep.style.display = 'block';
+        calendarStep.style.transition = 'opacity 0.35s, transform 0.35s';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          calendarStep.style.opacity = '1';
+          calendarStep.style.transform = 'none';
+        }));
+        window.scrollTo({ top: document.querySelector('.right-panel').offsetTop - 80, behavior: 'smooth' });
+      }, 300);
+    });
+
+    function spawnParticles(container) {
+      const colors = ['#4A6FA5','#6BAAE8','#2A539E','#C0C0C0','#fff'];
+      const cx = container.offsetWidth / 2;
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'success-particle';
+        const angle = (i / 22) * Math.PI * 2;
+        const dist = 60 + Math.random() * 80;
+        p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+        p.style.setProperty('--ty', Math.sin(angle) * dist - 20 + 'px');
+        p.style.background = colors[i % colors.length];
+        p.style.left = cx + 'px';
+        p.style.top = '80px';
+        p.style.animationDelay = (Math.random() * 0.15) + 's';
+        p.style.width = p.style.height = (4 + Math.random() * 5) + 'px';
+        container.appendChild(p);
+        setTimeout(() => p.remove(), 1000);
+      }
+    }
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ── Magnetic + ripple on submit button ── */
+    const submitBtn = form.querySelector('.form-submit');
+    submitBtn.addEventListener('mousemove', e => {
+      const rect = submitBtn.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) * 0.18;
+      const y = (e.clientY - rect.top - rect.height / 2) * 0.18;
+      submitBtn.style.transition = 'transform 0.08s linear, background 0.3s, box-shadow 0.3s';
+      submitBtn.style.transform = `translate(${x}px, calc(${y}px - 3px))`;
+    });
+    submitBtn.addEventListener('mouseleave', () => {
+      submitBtn.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1), background 0.3s, box-shadow 0.3s';
+      submitBtn.style.transform = '';
+    });
+    submitBtn.addEventListener('click', e => {
+      const rect = submitBtn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const r = document.createElement('span');
+      Object.assign(r.style, {
+        position: 'absolute',
+        left: x + 'px', top: y + 'px',
+        width: '0', height: '0',
+        borderRadius: '50%',
+        background: 'rgba(255,255,255,0.22)',
+        transform: 'translate(-50%,-50%)',
+        animation: 'rippleEst 0.55s ease-out forwards',
+        pointerEvents: 'none'
+      });
+      submitBtn.appendChild(r);
+      setTimeout(() => r.remove(), 600);
+    });
+
+    /* ── Input focus micro-animations ── */
+    document.querySelectorAll('.form-input').forEach(input => {
+      const group = input.closest('.form-group');
+      if (!group) return;
+      const label = group.querySelector('.form-label');
+      if (!label) return;
+      input.addEventListener('focus', () => {
+        label.style.transition = 'color 0.25s';
+        label.style.color = 'var(--blue)';
+      });
+      input.addEventListener('blur', () => {
+        label.style.color = '';
+      });
+    });
+  </script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── STEP INDICATOR ── */
+    .step-indicator {
+      display: flex; align-items: center; gap: 0; margin-bottom: 28px;
+    }
+    .step-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--text-subtle); transition: color 0.4s;
+    }
+    .step-item.active { color: var(--text-primary); }
+    .step-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--bg-card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; font-family: 'Montserrat', sans-serif;
+      transition: background 0.4s, border-color 0.4s, color 0.4s, transform 0.4s, box-shadow 0.4s;
+    }
+    .step-item.active .step-dot {
+      background: var(--blue); border-color: var(--blue); color: #fff;
+      animation: stepPop 0.5s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 0 0 6px rgba(74,111,165,0.15);
+    }
+    .step-item.done .step-dot {
+      background: rgba(74,111,165,0.15); border-color: var(--blue); color: var(--blue);
+    }
+    @keyframes stepPop {
+      0%   { transform: scale(0.6); opacity: 0.5; }
+      60%  { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .step-line {
+      flex: 1; height: 2px; background: var(--border); margin: 0 12px;
+      position: relative; overflow: hidden; border-radius: 2px;
+    }
+    .step-line::after {
+      content: ''; position: absolute; top: 0; left: 0; height: 100%;
+      background: var(--blue); width: 0;
+      transition: width 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .step-line.filled::after { width: 100%; }
+
+    /* ── CALENDAR BACK LINK ── */
+    .calendar-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+      cursor: pointer; margin-bottom: 20px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .calendar-back:hover { color: var(--text-primary); transform: translateX(-3px); }
+
+    /* ── CALENDAR ── */
+    .calendar-wrap {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .calendar-wrap:has(.cal-day.selected) {
+      border-color: rgba(74,111,165,0.3);
+      box-shadow: 0 8px 32px rgba(74,111,165,0.08);
+    }
+    .calendar-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .cal-month-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem;
+      text-transform: capitalize; transition: opacity 0.2s, transform 0.2s;
+    }
+    .cal-month-label.changing { opacity: 0; transform: translateY(-6px); }
+    .cal-nav {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: transparent; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .cal-nav:hover { background: rgba(74,111,165,0.12); border-color: var(--blue); color: var(--blue); transform: scale(1.1); }
+    .cal-nav:active { transform: scale(0.92); }
+    .cal-days-header {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      text-align: center; margin-bottom: 8px;
+    }
+    .cal-days-header span {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-subtle); padding: 4px 0;
+    }
+    .cal-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+    }
+    .cal-grid.slide-left  { animation: gridSlideLeft  0.28s cubic-bezier(0.16,1,0.3,1); }
+    .cal-grid.slide-right { animation: gridSlideRight 0.28s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes gridSlideLeft  { from { opacity:0; transform:translateX(28px); } to { opacity:1; transform:none; } }
+    @keyframes gridSlideRight { from { opacity:0; transform:translateX(-28px); } to { opacity:1; transform:none; } }
+    .cal-day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font-size: 0.83rem; font-weight: 500;
+      cursor: pointer; transition: background 0.18s, color 0.18s, transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.18s;
+      position: relative; overflow: hidden;
+      opacity: 0; animation: dayIn 0.35s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes dayIn { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } }
+    .cal-day:hover:not(.disabled):not(.empty) {
+      background: rgba(74,111,165,0.14); color: var(--blue);
+      transform: scale(1.15);
+    }
+    .cal-day.today {
+      border: 1px solid rgba(74,111,165,0.5); color: var(--blue);
+      font-weight: 700;
+    }
+    .cal-day.selected {
+      background: var(--blue); color: #fff !important;
+      opacity: 1;
+      transform: scale(1.12);
+      box-shadow: 0 6px 20px rgba(74,111,165,0.55);
+      animation: daySelect 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes daySelect {
+      0%   { opacity:1; transform: scale(1); box-shadow: 0 0 0 rgba(74,111,165,0); }
+      40%  { opacity:1; transform: scale(1.22); box-shadow: 0 0 0 8px rgba(74,111,165,0.2); }
+      100% { opacity:1; transform: scale(1.12); box-shadow: 0 6px 20px rgba(74,111,165,0.55); }
+    }
+    .cal-day.disabled {
+      color: var(--text-subtle); opacity: 0.28; cursor: not-allowed;
+    }
+    .cal-day.empty { cursor: default; opacity: 1; animation: none; }
+
+    /* ── TIME SLOTS ── */
+    .time-section { margin-bottom: 24px; }
+    .time-section.entering { animation: timeSectionIn 0.4s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes timeSectionIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+    .time-label {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .time-slots { display: flex; flex-wrap: wrap; gap: 10px; }
+    .time-slot {
+      padding: 9px 20px; border-radius: 50px;
+      border: 1px solid var(--border); background: var(--bg-card);
+      font-size: 0.83rem; font-weight: 600; color: var(--text-muted);
+      cursor: pointer; position: relative; overflow: hidden;
+      transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s;
+      opacity: 0; animation: slotIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes slotIn { from { opacity:0; transform:translateY(10px) scale(0.9); } to { opacity:1; transform:none; } }
+    .time-slot:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-3px) scale(1.04); box-shadow: 0 6px 18px rgba(74,111,165,0.2); }
+    .time-slot.selected {
+      background: var(--blue); border-color: var(--blue); color: #fff;
+      opacity: 1;
+      box-shadow: 0 6px 20px rgba(74,111,165,0.45);
+      animation: slotSelect 0.35s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes slotSelect {
+      0%   { opacity:1; transform: scale(1); }
+      45%  { opacity:1; transform: scale(1.1); }
+      100% { opacity:1; transform: scale(1); }
+    }
+
+    /* ── CONFIRM BUTTON ENTRANCE ── */
+    @keyframes confirmSlideUp {
+      from { opacity:0; transform:translateY(20px) scale(0.96); }
+      to   { opacity:1; transform:translateY(0) scale(1); }
+    }
+    #confirmBtn.visible {
+      animation: confirmSlideUp 0.45s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+
+    /* ── SUCCESS PARTICLES ── */
+    .success-particle {
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      pointer-events: none; animation: particleBurst 0.8s ease-out forwards;
+    }
+    @keyframes particleBurst {
+      0%   { opacity:1; transform: translate(0,0) scale(1); }
+      100% { opacity:0; transform: translate(var(--tx), var(--ty)) scale(0); }
+    }
+    .form-success { position: relative; overflow: visible; }
+    .form-success-icon {
+      animation: successIconIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+    }
+    @keyframes successIconIn {
+      from { transform: scale(0) rotate(-30deg); opacity: 0; }
+      60%  { transform: scale(1.2) rotate(5deg); }
+      to   { transform: scale(1) rotate(0); opacity: 1; }
+    }
+    @keyframes rippleEst { to { width: 400px; height: 400px; opacity: 0; } }
+    #pageVeil {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #080808; pointer-events: none;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 0.7s cubic-bezier(0.76,0,0.24,1);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #pageVeil.enter { clip-path: inset(0% 0 0 0); pointer-events: all; }
+    #pageVeil.exit  { clip-path: inset(0 0 100% 0); }
+    #pageVeil img { width: min(260px, 65vw); opacity: 0; transform: scale(0.85); transition: opacity 0.4s ease 0.25s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.25s; }
+    #pageVeil.enter img { opacity: 1; transform: scale(1); }
+    .section-title { animation: floatTitle 5s ease-in-out infinite; }
+    @keyframes floatTitle { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  </style>
+  <div id="pageVeil"><img src="media/logo.png" alt="PM Luxury" /></div>
+  <script>
+  (function() {
+    const veil = document.getElementById('pageVeil');
+    if (!veil) return;
+    if (sessionStorage.getItem('transitioning')) {
+      sessionStorage.removeItem('transitioning');
+      veil.style.transition = 'none';
+      veil.classList.add('enter');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        veil.style.transition = 'clip-path 0.7s cubic-bezier(0.76,0,0.24,1)';
+        veil.classList.replace('enter','exit');
+        setTimeout(() => veil.classList.remove('exit'), 750);
+      }));
+    }
+    document.querySelectorAll('a[href*="index"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href.startsWith('#')) return;
+        e.preventDefault();
+        sessionStorage.setItem('transitioning','1');
+        veil.classList.add('enter');
+        setTimeout(() => { window.location.href = href; }, 680);
+      });
+    });
+  })();
+  </script>
+  <script src="cursor.js"></script>
+</body>
+</html>

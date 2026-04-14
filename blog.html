@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog PM Luxury — Conseils professionnels sur le lavage de voiture, l'entretien automobile et le détailing à domicile dans Lanaudière et Montréal." />
+  <meta name="keywords" content="lavage voiture, detailing auto, nettoyage voiture maison, entretien automobile, shampoing sièges, polissage voiture, Lanaudière, Montréal" />
+  <meta property="og:title" content="Blog PM Luxury — Conseils lavage & détailing auto" />
+  <meta property="og:description" content="Astuces, guides et conseils d'experts pour entretenir votre véhicule comme un professionnel." />
+  <meta property="og:type" content="website" />
+  <title>Blog — PM Luxury | Conseils Lavage & Détailing Auto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary:    #0B0B0B;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --text-primary:  #F0F0F0;
+      --text-muted:    #888;
+      --blue:          #6B9FD4;
+      --blue-dark:     #4A6FA5;
+      --silver:        #C8C8C8;
+      --border:        rgba(255,255,255,0.08);
+      --radius-md:     14px;
+      --radius-lg:     20px;
+      --transition:    0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ── HEADER ── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { display: flex; align-items: center; }
+    .logo-img { height: 38px; width: auto; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue-dark);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      transition: background var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--blue) !important; color: #fff !important; }
+
+    /* ── HERO BLOG ── */
+    .blog-hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(74,111,165,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--blue);
+    }
+
+    .blog-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .blog-hero h1 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .blog-hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── ARTICLES GRID ── */
+    .blog-section {
+      padding: 60px 0 100px;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      border-color: rgba(74,111,165,0.3);
+    }
+
+    .article-card.featured {
+      grid-column: span 2;
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2a 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .article-card.featured .card-img {
+      aspect-ratio: 16/8;
+    }
+
+    .card-img-icon {
+      font-size: 3rem;
+      opacity: 0.3;
+    }
+
+    .card-img-gradient {
+      position: absolute;
+      inset: 0;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(74,111,165,0.12);
+      border: 1px solid rgba(74,111,165,0.2);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .article-card.featured .card-title {
+      font-size: 1.3rem;
+    }
+
+    .card-excerpt {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-read {
+      color: var(--blue);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s ease;
+    }
+    .article-card:hover .card-read { gap: 8px; }
+
+    /* ── ARTICLE FULL ── */
+    .article-full {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--bg-primary);
+      overflow-y: auto;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.45s cubic-bezier(0.16,1,0.3,1), transform 0.45s cubic-bezier(0.16,1,0.3,1);
+      visibility: hidden;
+    }
+
+    .article-full.open {
+      pointer-events: all;
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    .article-full.closing {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .article-header {
+      padding: 100px 0 60px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 60px;
+    }
+
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      transition: color var(--transition);
+      cursor: pointer;
+    }
+    .article-back:hover { color: var(--text-primary); }
+
+    .article-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 800px;
+    }
+
+    .article-header p.intro {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    .article-body {
+      max-width: 720px;
+      padding-bottom: 100px;
+    }
+
+    .article-body h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 48px 0 16px;
+      color: var(--text-primary);
+    }
+
+    .article-body h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 32px 0 12px;
+      color: var(--silver);
+    }
+
+    .article-body p {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .article-body li {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .article-body strong { color: var(--text-primary); font-weight: 600; }
+
+    .article-tip {
+      background: rgba(74,111,165,0.08);
+      border: 1px solid rgba(74,111,165,0.2);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 16px 20px;
+      margin: 28px 0;
+    }
+
+    .article-tip p {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      color: var(--silver);
+    }
+
+    .article-tip strong { color: var(--blue); }
+
+    /* ── CTA SECTION ── */
+    @keyframes ctaGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.08); }
+    }
+    @keyframes ctaBorderPulse {
+      0%, 100% { border-color: rgba(74,111,165,0.25); box-shadow: 0 0 0 0 rgba(74,111,165,0); }
+      50%       { border-color: rgba(74,111,165,0.6);  box-shadow: 0 0 32px 4px rgba(74,111,165,0.12); }
+    }
+    @keyframes ctaShimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .blog-cta {
+      position: relative;
+      background: #0e0e0e;
+      border: 1px solid rgba(74,111,165,0.25);
+      border-radius: var(--radius-lg);
+      padding: 72px 48px;
+      text-align: center;
+      margin: 0 0 80px;
+      overflow: hidden;
+      animation: ctaBorderPulse 3.5s ease-in-out infinite;
+    }
+
+    .blog-cta::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(74,111,165,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      animation: ctaGlow 4s ease-in-out infinite;
+    }
+
+    .blog-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 200px;
+      background: radial-gradient(ellipse, rgba(74,111,165,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      animation: ctaGlow 4s ease-in-out infinite reverse;
+    }
+
+    .blog-cta h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+      position: relative;
+      background: linear-gradient(90deg, #F0F0F0 20%, #6B9FD4 50%, #F0F0F0 80%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: ctaShimmer 4s linear infinite;
+    }
+
+    .blog-cta p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-dark);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background var(--transition), transform 0.2s ease;
+    }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    .blog-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ── MOBILE NAV ── */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 20px;
+      background: rgba(11,11,11,0.95);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .burger-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .burger-btn span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(11,11,11,0.98);
+      backdrop-filter: blur(30px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--text-primary); }
+    .mobile-menu a.active { color: var(--blue); }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .articles-grid { grid-template-columns: 1fr 1fr; }
+      .article-card.featured { grid-column: span 2; }
+      #header .nav-links, #header .nav-cta { display: none; }
+      .mobile-header { display: flex; }
+      .blog-hero { padding-top: 100px; }
+    }
+
+    @media (max-width: 600px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .article-card.featured { grid-column: span 1; }
+      .blog-cta { padding: 40px 24px; }
+      .blog-cta h2 { font-size: 1.4rem; }
+      .article-header { padding-top: 80px; }
+    }
+    #pageVeil {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #080808;
+      pointer-events: none;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #pageVeil.enter  { clip-path: inset(0% 0 0 0); pointer-events: all; }
+    #pageVeil.exit   { clip-path: inset(0 0 100% 0); }
+    #pageVeil img {
+      width: min(260px, 65vw);
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.4s ease 0.25s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.25s;
+    }
+    #pageVeil.enter img {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Page veil overlay -->
+  <div id="pageVeil">
+    <img src="media/logo.png" alt="PM Luxury" />
+  </div>
+
+  <!-- ── HEADER DESKTOP ── -->
+  <header id="header">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="index.html" class="logo" aria-label="PM Luxury — Accueil">
+          <img src="media/logo.png" alt="PM Luxury" class="logo-img" />
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#expertises">Expertises</a></li>
+          <li><a href="index.html#galerie">Galerie</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="estimation.html">Contact</a></li>
+        </ul>
+        <a href="estimation.html" class="nav-cta">Obtenir une estimation</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── HEADER MOBILE ── -->
+  <div class="mobile-header" id="mobileHeader">
+    <a href="index.html"><img src="media/logo.png" alt="PM Luxury" style="height:32px;" /></a>
+    <button class="burger-btn" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Fermer">✕</button>
+    <a href="index.html#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+    <a href="index.html#expertises" onclick="document.getElementById('mobileMenu').classList.remove('open')">Expertises</a>
+    <a href="index.html#galerie" onclick="document.getElementById('mobileMenu').classList.remove('open')">Galerie</a>
+    <a href="blog.html" class="active" onclick="document.getElementById('mobileMenu').classList.remove('open')">Blog</a>
+    <a href="estimation.html" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+    <a href="estimation.html" style="background:var(--blue-dark);color:#fff;padding:12px 28px;border-radius:100px;font-size:0.85rem;font-weight:700;margin-top:8px;">Obtenir une estimation</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="section-label">Conseils & Guides</div>
+      <h1>Le blog <em>PM Luxury</em></h1>
+      <p>Astuces de pros, guides d'entretien et conseils pour garder votre véhicule impeccable.</p>
+    </div>
+  </section>
+
+  <!-- ── ARTICLES ── -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="articles-grid">
+
+        <!-- Article 1 – Featured -->
+        <div class="article-card featured" onclick="openArticle('art1')">
+          <div class="card-body">
+            <span class="card-tag">Guide complet</span>
+            <h2 class="card-title">Comment bien laver sa voiture à domicile : le guide complet étape par étape</h2>
+            <p class="card-excerpt">Tout ce que vous devez savoir pour laver votre voiture correctement sans la rayer, avec les bons produits et les bonnes techniques utilisées par les professionnels du détailing.</p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span>PM Luxury</span>
+                <span>·</span>
+                <span>8 min de lecture</span>
+              </div>
+              <span class="card-read">Lire l'article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="article-card" onclick="openArticle('art2')">
+          <div class="card-body">
+            <span class="card-tag">Entretien</span>
+            <h2 class="card-title">Pourquoi le polissage protège votre peinture et augmente la valeur de revente</h2>
+            <p class="card-excerpt">Le polissage n'est pas qu'esthétique — c'est un investissement. Découvrez comment il protège votre voiture sur le long terme.</p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span>PM Luxury</span>
+                <span>·</span>
+                <span>5 min</span>
+              </div>
+              <span class="card-read">Lire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="article-card" onclick="openArticle('art3')">
+          <div class="card-body">
+            <span class="card-tag">Technique</span>
+            <h2 class="card-title">La méthode des deux seaux : évitez les micro-rayures lors du lavage</h2>
+            <p class="card-excerpt">Un secret de professionnel que tout propriétaire de voiture devrait connaître pour ne plus jamais rayer sa peinture en lavant.</p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span>PM Luxury</span>
+                <span>·</span>
+                <span>4 min</span>
+              </div>
+              <span class="card-read">Lire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="article-card" onclick="openArticle('art4')">
+          <div class="card-body">
+            <span class="card-tag">Intérieur</span>
+            <h2 class="card-title">Shampoing des sièges : comment nettoyer en profondeur tissu et cuir</h2>
+            <p class="card-excerpt">Taches, odeurs, poussière — voici comment remettre l'intérieur de votre véhicule à neuf avec les bons produits.</p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span>PM Luxury</span>
+                <span>·</span>
+                <span>6 min</span>
+              </div>
+              <span class="card-read">Lire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="article-card" onclick="openArticle('art5')">
+          <div class="card-body">
+            <span class="card-tag">Saisons</span>
+            <h2 class="card-title">Entretien automobile en hiver au Québec : nos conseils pour protéger votre voiture</h2>
+            <p class="card-excerpt">Sel de route, froid extrême, verglas — l'hiver québécois est dur pour les voitures. Voici comment protéger votre véhicule efficacement.</p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span>PM Luxury</span>
+                <span>·</span>
+                <span>7 min</span>
+              </div>
+              <span class="card-read">Lire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="article-card" onclick="openArticle('art6')">
+          <div class="card-body">
+            <span class="card-tag">Premium</span>
+            <h2 class="card-title">Service de détailing mobile vs lavage automatique : pourquoi le mobile gagne</h2>
+            <p class="card-excerpt">Portiques automatiques, libre-service, détailing mobile — on compare tout pour vous aider à faire le meilleur choix pour votre véhicule.</p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span>PM Luxury</span>
+                <span>·</span>
+                <span>5 min</span>
+              </div>
+              <span class="card-read">Lire <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="container">
+    <div class="blog-cta">
+      <h2>Votre véhicule mérite le meilleur</h2>
+      <p>Laissez PM Luxury s'en occuper — directement chez vous, dans Lanaudière et Montréal.</p>
+      <a href="estimation.html" class="btn-primary" style="position:relative;z-index:1;box-shadow:0 0 24px rgba(74,111,165,0.4);font-size:0.85rem;padding:16px 36px;">
+        Obtenir une estimation gratuite
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="blog-footer">
+    <div class="container">
+      <p>&copy; <span id="yr"></span> PM Luxury. Tous droits réservés. — <a href="index.html" style="color:var(--blue)">Retour à l'accueil</a></p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ── ARTICLES COMPLETS ── -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <!-- ART 1 -->
+  <div class="article-full" id="art1">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-back" onclick="closeArticle('art1')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour au blog
+        </div>
+        <span class="section-label">Guide complet</span>
+        <h1>Comment bien laver sa voiture à domicile : le guide complet étape par étape</h1>
+        <p class="intro">Tout ce que vous devez savoir pour laver votre voiture correctement sans la rayer, avec les bons produits et les bonnes techniques utilisées par les professionnels du détailing.</p>
+      </div>
+      <div class="article-body">
+        <h2>Pourquoi le lavage manuel est supérieur au lavage automatique ?</h2>
+        <p>Les portiques automatiques utilisent des brosses rotatives qui accumulent les débris des lavages précédents. Résultat : des micro-rayures invisibles à l'œil nu, mais qui ternissent progressivement votre peinture. Le lavage manuel, avec les bons gants et les bons produits, respecte la peinture de votre véhicule.</p>
+        <p>Chez PM Luxury, nous utilisons exclusivement des produits de grade professionnel et des techniques qui préservent l'intégrité de votre peinture sur le long terme.</p>
+
+        <h2>Le matériel nécessaire</h2>
+        <ul>
+          <li><strong>Deux seaux</strong> — un pour le savon, un pour rincer le gant (méthode des deux seaux)</li>
+          <li><strong>Gant de lavage en microfibre</strong> — jamais d'éponge ordinaire</li>
+          <li><strong>Savon auto pH neutre</strong> — surtout pas de liquide vaisselle qui dénature la cire</li>
+          <li><strong>Chiffons microfibre doux</strong> pour le séchage</li>
+          <li><strong>Tuyau d'arrosage</strong> avec bonne pression</li>
+        </ul>
+
+        <div class="article-tip">
+          <p><strong>Conseil PM Luxury :</strong> Lavez toujours à l'ombre ou par temps nuageux. Le soleil fait sécher le savon trop vite et laisse des traces blanches sur la peinture.</p>
+        </div>
+
+        <h2>Étape 1 — Le pré-rinçage</h2>
+        <p>Rincez abondamment l'ensemble de la carrosserie avec de l'eau. L'objectif est d'éliminer un maximum de poussière et de débris grossiers <strong>avant</strong> de toucher la peinture avec quoi que ce soit. Ne sautez jamais cette étape — chaque grain de sable qui traîne est une rayure potentielle.</p>
+
+        <h2>Étape 2 — Le lavage des jantes</h2>
+        <p>Lavez toujours les jantes en premier. Elles sont la partie la plus sale du véhicule (freins, goudron, crasse de route). Utilisez un produit spécifique jantes et une brosse dédiée que vous n'utiliserez que pour ça — jamais sur la carrosserie.</p>
+
+        <h2>Étape 3 — Le lavage de la carrosserie</h2>
+        <p>Commencez toujours par le toit, puis descendez progressivement. Ne lavez jamais en mouvements circulaires — faites des passages <strong>droits et linéaires</strong> dans le sens de la longueur du véhicule. Les mouvements circulaires créent des tourbillons visibles sous la lumière directe.</p>
+        <p>Rincez régulièrement votre gant dans le seau de rinçage propre avant de le replonger dans le seau de savon — c'est le principe de la méthode des deux seaux.</p>
+
+        <h2>Étape 4 — Le rinçage final</h2>
+        <p>Rincez en laissant couler l'eau en nappe sur la carrosserie plutôt qu'en jet direct. Cette technique réduit le nombre de gouttes d'eau qui restent et facilite le séchage.</p>
+
+        <h2>Étape 5 — Le séchage</h2>
+        <p>Ne laissez jamais la voiture sécher à l'air libre — les gouttes d'eau laissent des dépôts calcaires. Utilisez des chiffons microfibre propres et secs, et tamponnez doucement plutôt que de frotter.</p>
+
+        <div class="article-tip">
+          <p><strong>Résultat pro :</strong> Terminez par l'application d'une cire ou d'un spray détaillant pour protéger la peinture et lui donner ce brillant professionnel qui dure.</p>
+        </div>
+
+        <h2>Vous préférez déléguer ?</h2>
+        <p>PM Luxury se déplace directement chez vous dans Lanaudière et Montréal. Nos techniciens utilisent ces techniques professionnelles et des produits haut de gamme pour un résultat irréprochable, sans que vous ayez à bouger.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ART 2 -->
+  <div class="article-full" id="art2">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-back" onclick="closeArticle('art2')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour au blog
+        </div>
+        <span class="section-label">Entretien</span>
+        <h1>Pourquoi le polissage protège votre peinture et augmente la valeur de revente</h1>
+        <p class="intro">Le polissage n'est pas qu'esthétique — c'est un investissement sur la durée de vie et la valeur marchande de votre véhicule.</p>
+      </div>
+      <div class="article-body">
+        <h2>Qu'est-ce que le polissage exactement ?</h2>
+        <p>Le polissage consiste à retirer une infime couche de vernis (le clear coat) pour éliminer les micro-rayures, les swirls (tourbillons) et les oxydations superficielles. On révèle ainsi la peinture vive qui se trouvait en dessous.</p>
+
+        <h2>Les bénéfices concrets</h2>
+        <ul>
+          <li><strong>Élimination des rayures légères</strong> — griffures de lavage, rayures de branches</li>
+          <li><strong>Suppression de l'oxydation</strong> — peinture terne, blanchâtre ou piquetée</li>
+          <li><strong>Brillance retrouvée</strong> — comme à la sortie du concessionnaire</li>
+          <li><strong>Meilleure adhérence de la cire</strong> — la protection dure plus longtemps</li>
+        </ul>
+
+        <div class="article-tip">
+          <p><strong>Le saviez-vous ?</strong> Une carrosserie bien entretenue peut augmenter la valeur de revente d'un véhicule de 5 à 15% selon les experts automobiles.</p>
+        </div>
+
+        <h2>Polissage vs Lustrage : quelle différence ?</h2>
+        <p>Le <strong>lustrage</strong> n'enlève rien — il dépose un produit qui remplit temporairement les rayures et donne un aspect brillant. C'est une solution cosmétique de courte durée. Le <strong>polissage</strong>, lui, corrige réellement la peinture. Les résultats durent.</p>
+
+        <h2>À quelle fréquence faire polir sa voiture ?</h2>
+        <p>En règle générale : une fois par an pour les véhicules régulièrement lavés correctement, et deux fois par an pour les voitures exposées au soleil intense ou garées à l'extérieur toute l'année.</p>
+
+        <h2>Confier le polissage à un professionnel</h2>
+        <p>Un polissage mal exécuté peut amincir le vernis de façon irréversible. Chez PM Luxury, nos techniciens utilisent des machines à orbite double action qui corrigent sans aggrever, sur tous types de peintures.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ART 3 -->
+  <div class="article-full" id="art3">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-back" onclick="closeArticle('art3')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour au blog
+        </div>
+        <span class="section-label">Technique</span>
+        <h1>La méthode des deux seaux : évitez les micro-rayures lors du lavage</h1>
+        <p class="intro">Un secret de professionnel simple à appliquer qui change tout pour la santé de votre peinture.</p>
+      </div>
+      <div class="article-body">
+        <h2>Le problème du lavage classique</h2>
+        <p>La plupart des gens lavent leur voiture avec un seul seau. Après avoir frotté la carrosserie, ils replongent le gant dans l'eau savonneuse — qui est maintenant chargée de sable, de poussière et de débris abrasifs. Le prochain passage avec ce gant devient alors une véritable ponceuse sur votre peinture.</p>
+
+        <h2>Le principe des deux seaux</h2>
+        <p>C'est simple :</p>
+        <ul>
+          <li><strong>Seau 1 — Savon :</strong> rempli d'eau et de shampoing auto. Il reste propre tout au long du lavage.</li>
+          <li><strong>Seau 2 — Rinçage :</strong> rempli d'eau claire. Avant chaque rechargement en savon, vous rincez votre gant dans ce seau pour y déposer les salissures.</li>
+        </ul>
+
+        <div class="article-tip">
+          <p><strong>Astuce pro :</strong> Ajoutez un garde-boue (dirt trap) au fond de chaque seau. Ce filtre retient les débris au fond et empêche le gant de les repêcher.</p>
+        </div>
+
+        <h2>Les gants qui font la différence</h2>
+        <p>Oubliez les éponges. Utilisez un <strong>gant de lavage en microfibre ou en laine d'agneau</strong>. Ces matières emprisonnent la saleté dans leurs fibres profondes plutôt que de la faire glisser sur la peinture. Résultat : zéro micro-rayure.</p>
+
+        <h2>Résumé de la méthode</h2>
+        <ol>
+          <li>Pré-rinçage abondant</li>
+          <li>Lavage jantes (seau dédié)</li>
+          <li>Rinçage gant dans seau 2, rechargement dans seau 1</li>
+          <li>Passage sur carrosserie — du haut vers le bas</li>
+          <li>Répéter 3 et 4 pour chaque panneau</li>
+          <li>Rinçage final en nappe</li>
+          <li>Séchage microfibre</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ART 4 -->
+  <div class="article-full" id="art4">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-back" onclick="closeArticle('art4')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour au blog
+        </div>
+        <span class="section-label">Intérieur</span>
+        <h1>Shampoing des sièges : comment nettoyer en profondeur tissu et cuir</h1>
+        <p class="intro">Taches, odeurs, poussière — voici comment remettre l'intérieur de votre véhicule à neuf.</p>
+      </div>
+      <div class="article-body">
+        <h2>Tissu vs Cuir : deux approches différentes</h2>
+        <p>Les sièges en tissu et en cuir ne se traitent pas de la même façon. Utiliser le mauvais produit peut décolorer, craqueler ou endommager irrémédiablement vos sièges.</p>
+
+        <h2>Sièges en tissu</h2>
+        <p>Pour un nettoyage en profondeur :</p>
+        <ul>
+          <li>Aspirez d'abord soigneusement pour enlever les débris secs</li>
+          <li>Appliquez un shampoing textile mousse (pH neutre)</li>
+          <li>Travaillez en mouvements circulaires avec une brosse à poils souples</li>
+          <li>Extrayez avec un aspirateur eau et poussière ou une serviette microfibre absorbante</li>
+          <li>Laissez sécher complètement avant utilisation (minimum 4 heures)</li>
+        </ul>
+
+        <div class="article-tip">
+          <p><strong>Pour les odeurs persistantes :</strong> après séchage, saupoudrez du bicarbonate de soude, laissez agir 30 minutes, puis aspirez. Très efficace contre les odeurs de cigarette ou d'animaux.</p>
+        </div>
+
+        <h2>Sièges en cuir</h2>
+        <ul>
+          <li>Nettoyant cuir doux — jamais de produits acides ou alcoolisés</li>
+          <li>Application avec un chiffon microfibre (ne jamais frotter fort)</li>
+          <li>Rinçage avec chiffon humide propre</li>
+          <li><strong>Toujours terminer par un conditionneur de cuir</strong> — le cuir non nourri craquèle et vieillit mal</li>
+        </ul>
+
+        <h2>L'entretien régulier : la vraie solution</h2>
+        <p>Un nettoyage approfondi tous les 3 à 6 mois protège vos sièges sur le long terme et maintient la valeur de votre véhicule. Attendre que les taches soient incrustées les rend beaucoup plus difficiles à traiter.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ART 5 -->
+  <div class="article-full" id="art5">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-back" onclick="closeArticle('art5')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour au blog
+        </div>
+        <span class="section-label">Saisons</span>
+        <h1>Entretien automobile en hiver au Québec : nos conseils pour protéger votre voiture</h1>
+        <p class="intro">Sel de route, froid extrême, verglas — l'hiver québécois est sans pitié pour les véhicules. Voici comment les protéger efficacement.</p>
+      </div>
+      <div class="article-body">
+        <h2>L'ennemi numéro 1 : le sel de déglaçage</h2>
+        <p>Le sel répandu sur les routes québécoises est extrêmement corrosif. Il s'accumule sous la carrosserie, dans les passages de roues et dans les recoins inaccessibles. Sans protection adéquate, la rouille s'installe en quelques saisons.</p>
+
+        <h2>Avant l'hiver : la préparation</h2>
+        <ul>
+          <li><strong>Application de cire ou de sealant</strong> — crée une barrière entre la peinture et le sel</li>
+          <li><strong>Protection des dessous de caisse</strong> avec un produit antirouille</li>
+          <li><strong>Nettoyage complet de l'intérieur</strong> avant d'installer les tapis d'hiver</li>
+          <li><strong>Traitement des joints de portes</strong> avec un produit silicone (évite le gel)</li>
+        </ul>
+
+        <div class="article-tip">
+          <p><strong>Timing idéal :</strong> Faites votre préparation hivernale en octobre, avant les premières neiges. Une fois le sel sur les routes, il est trop tard pour protéger efficacement.</p>
+        </div>
+
+        <h2>Pendant l'hiver : les bons réflexes</h2>
+        <ul>
+          <li>Lavez votre voiture <strong>au moins une fois toutes les 2 semaines</strong> pendant la saison froide</li>
+          <li>Insistez sur les dessous de caisse et les passages de roues</li>
+          <li>Évitez les portiques automatiques par grand froid (l'eau gèle dans les serrures)</li>
+          <li>Préférez les tunnels de lavage manuel avec rinçage haute pression sous caisse</li>
+        </ul>
+
+        <h2>Après l'hiver : le grand nettoyage</h2>
+        <p>Le lavage de printemps est crucial. C'est le moment d'éliminer tous les résidus de sel accumulés pendant l'hiver, de reprendre le polissage si nécessaire, et d'appliquer une protection fraîche pour l'été.</p>
+        <p>PM Luxury propose des forfaits de nettoyage saisonnier spécialement conçus pour le contexte climatique québécois — directement chez vous.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ART 6 -->
+  <div class="article-full" id="art6">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-back" onclick="closeArticle('art6')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Retour au blog
+        </div>
+        <span class="section-label">Premium</span>
+        <h1>Service de détailing mobile vs lavage automatique : pourquoi le mobile gagne</h1>
+        <p class="intro">On compare honnêtement les options disponibles pour vous aider à choisir ce qui est vraiment le mieux pour votre véhicule.</p>
+      </div>
+      <div class="article-body">
+        <h2>Le lavage automatique (portique)</h2>
+        <p>Rapide et accessible, le portique automatique est la solution la plus répandue. Mais ses inconvénients sont réels :</p>
+        <ul>
+          <li>Brosses rotatives qui accumulent la saleté des véhicules précédents</li>
+          <li>Micro-rayures inévitables sur la peinture</li>
+          <li>Rinçage insuffisant dans les recoins</li>
+          <li>Aucune attention au détail — miroirs, joints, roues traitées superficiellement</li>
+          <li>Séchage à l'air soufflé qui laisse des traces de calcaire</li>
+        </ul>
+
+        <h2>Le libre-service</h2>
+        <p>Meilleur que le portique si vous savez ce que vous faites, mais demande du temps, du matériel, et une bonne technique. Par grand froid québécois, c'est aussi peu pratique.</p>
+
+        <h2>Le détailing mobile PM Luxury</h2>
+        <ul>
+          <li><strong>On vient chez vous</strong> — pas de déplacement, pas d'attente</li>
+          <li>Produits de grade professionnel sur chaque véhicule</li>
+          <li>Attention au moindre détail — extérieur, intérieur, jantes, vitres</li>
+          <li>Techniques manuelles qui respectent votre peinture</li>
+          <li>Résultat visible et durable</li>
+        </ul>
+
+        <div class="article-tip">
+          <p><strong>Le vrai calcul :</strong> Un portique mensuel à 20$ = 240$/an. Un service PM Luxury trimestriel préserve votre peinture, votre valeur de revente, et vous fait gagner du temps. Le choix est vite fait.</p>
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>Pour un véhicule ordinaire que vous voulez juste garder propre, le libre-service fait l'affaire. Mais pour un véhicule auquel vous tenez, dont vous voulez préserver la peinture et maximiser la valeur de revente, le détailing mobile professionnel n'a pas de compétition.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    function openArticle(id) {
+      const el = document.getElementById(id);
+      el.scrollTop = 0;
+      el.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeArticle(id) {
+      const el = document.getElementById(id);
+      el.classList.add('closing');
+      setTimeout(() => {
+        el.classList.remove('open', 'closing');
+        document.body.style.overflow = '';
+      }, 420);
+    }
+
+    // Fermer avec Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.article-full.open').forEach(el => {
+          closeArticle(el.id);
+        });
+      }
+    });
+
+    // Transition cinématique
+    (function() {
+      const veil = document.getElementById('pageVeil');
+      if (!veil) return;
+      if (sessionStorage.getItem('transitioning')) {
+        sessionStorage.removeItem('transitioning');
+        veil.style.transition = 'none';
+        veil.classList.add('enter');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          veil.style.transition = 'clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1)';
+          veil.classList.replace('enter', 'exit');
+          setTimeout(() => veil.classList.remove('exit'), 750);
+        }));
+      }
+      document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (!href || href.startsWith('#') || href.startsWith('javascript') || this.target === '_blank') return;
+          e.preventDefault();
+          sessionStorage.setItem('transitioning', '1');
+          veil.classList.add('enter');
+          setTimeout(() => { window.location.href = href; }, 680);
+        });
+      });
+    })();
+  </script>
+  <script src="cursor.js"></script>
+</body>
+</html>
