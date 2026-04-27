@@ -1413,7 +1413,11 @@
     function selectDate(date) {
       selectedDate = date;
       selectedTime = null;
-      document.getElementById('rdv-date').value = date.toLocaleDateString('fr-CA');
+      // Format fiable YYYY-MM-DD indépendant du navigateur/OS
+      const yyyy = date.getFullYear();
+      const mm   = String(date.getMonth() + 1).padStart(2, '0');
+      const dd   = String(date.getDate()).padStart(2, '0');
+      document.getElementById('rdv-date').value = `${yyyy}-${mm}-${dd}`;
       document.getElementById('rdv-time').value = '';
       renderCalendar();
       showTimeSlots(date);
@@ -1613,12 +1617,15 @@
           rdv_iso:   rdvISO,
         })
       })
-      .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+      .then(async res => {
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error('HTTP ' + res.status + ' — ' + body);
+        }
         showStepResult('success');
       })
       .catch(err => {
-        console.error('Webhook error:', err);
+        console.error('Webhook error:', err.message);
         showStepResult('error');
         btn.disabled = false;
         btn.innerHTML = 'Confirmer le rendez-vous <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
