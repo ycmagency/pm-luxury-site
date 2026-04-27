@@ -1433,74 +1433,77 @@
       return h * 60 + (m || 0);
     }
 
-    async function showTimeSlots(date) {
-      const section = document.getElementById('timeSection');
-      const label   = document.getElementById('timeLabel');
+    function showTimeSlots(date) {
+      const section  = document.getElementById('timeSection');
+      const label    = document.getElementById('timeLabel');
       const slotsDiv = document.getElementById('timeSlots');
 
       label.textContent = DAY_NAMES[date.getDay()] + ' ' + date.getDate() + ' ' + MONTHS_FR[date.getMonth()];
-      slotsDiv.innerHTML = '<p style="color:var(--text-subtle);font-size:0.82rem;padding:4px 0">Vérification des disponibilités…</p>';
+      slotsDiv.innerHTML = '';
+
+      // ── Afficher tous les créneaux immédiatement (synchrone) ──
+      const slots = getSlotsForDate(date);
+      slots.forEach((t, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'time-slot';
+        btn.textContent = t;
+        btn.style.animationDelay = (i * 60) + 'ms';
+        if (t === selectedTime) btn.classList.add('selected');
+        btn.addEventListener('click', () => {
+          selectedTime = t;
+          document.getElementById('rdv-time').value = t;
+          slotsDiv.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+          btn.classList.add('selected');
+          const cb = document.getElementById('confirmBtn');
+          cb.style.display = '';
+          cb.classList.remove('visible');
+          void cb.offsetWidth;
+          cb.classList.add('visible');
+          document.getElementById('cal-note').style.display = '';
+        });
+        slotsDiv.appendChild(btn);
+      });
+
+      // re-trigger animation
+      section.classList.remove('entering');
+      void section.offsetWidth;
+      section.classList.add('entering');
       section.style.display = 'block';
 
-      // Récupérer les créneaux déjà réservés depuis le backend
+      // ── Bloquer les créneaux en arrière-plan (ne bloque rien si erreur) ──
       const dateStr = [
         date.getFullYear(),
         String(date.getMonth() + 1).padStart(2, '0'),
         String(date.getDate()).padStart(2, '0')
       ].join('-');
 
-      let bookedSlots = [];
-      try {
-        const r = await fetch(`${MAKE_WEBHOOK_URL}/slots?date=${dateStr}`);
-        const data = await r.json();
-        bookedSlots = data.booked || [];
-      } catch(e) {
-        console.warn('Impossible de vérifier les disponibilités:', e);
-      }
-
-      slotsDiv.innerHTML = '';
-      const slots = getSlotsForDate(date);
-
-      slots.forEach((t, i) => {
-        const slotMin = slotToMinutes(t);
-        // Créneau bloqué si un RDV existant commence dans les 2h avant ou après
-        const isUnavailable = bookedSlots.some(b => {
-          const bookedMin = slotToMinutes(b);
-          return slotMin >= bookedMin && slotMin < bookedMin + 120;
-        });
-
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'time-slot';
-        btn.textContent = t;
-        btn.style.animationDelay = (i * 60) + 'ms';
-
-        if (isUnavailable) {
-          btn.classList.add('unavailable');
-          btn.disabled = true;
-          btn.title = 'Créneau non disponible';
-        } else {
-          if (t === selectedTime) btn.classList.add('selected');
-          btn.addEventListener('click', () => {
-            selectedTime = t;
-            document.getElementById('rdv-time').value = t;
-            slotsDiv.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-            btn.classList.add('selected');
-            const cb = document.getElementById('confirmBtn');
-            cb.style.display = '';
-            cb.classList.remove('visible');
-            void cb.offsetWidth;
-            cb.classList.add('visible');
-            document.getElementById('cal-note').style.display = '';
+      fetch(`${MAKE_WEBHOOK_URL}/slots?date=${dateStr}`)
+        .then(r => r.json())
+        .then(data => {
+          const bookedSlots = data.booked || [];
+          if (!bookedSlots.length) return;
+          slotsDiv.querySelectorAll('.time-slot').forEach(btn => {
+            const slotMin = slotToMinutes(btn.textContent.trim());
+            const blocked = bookedSlots.some(b => {
+              const bookedMin = slotToMinutes(b);
+              return slotMin >= bookedMin && slotMin < bookedMin + 120;
+            });
+            if (blocked) {
+              btn.classList.add('unavailable');
+              btn.disabled = true;
+              // Si ce créneau était sélectionné, on le désélectionne
+              if (btn.classList.contains('selected')) {
+                btn.classList.remove('selected');
+                selectedTime = null;
+                document.getElementById('rdv-time').value = '';
+                document.getElementById('confirmBtn').style.display = 'none';
+                document.getElementById('cal-note').style.display = 'none';
+              }
+            }
           });
-        }
-        slotsDiv.appendChild(btn);
-      });
-
-      // re-trigger section animation
-      section.classList.remove('entering');
-      void section.offsetWidth;
-      section.classList.add('entering');
+        })
+        .catch(() => { /* échec silencieux — créneaux tous disponibles */ });
     }
 
     document.getElementById('calPrev').addEventListener('click', () => {
