@@ -1037,8 +1037,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label">Service souhaité</label>
-            <input type="hidden" id="service" name="service" />
+            <label class="form-label">Service souhaité <span aria-hidden="true">*</span></label>
+            <input type="hidden" id="service" name="service" required />
             <div class="custom-select" id="cs-service">
               <button type="button" class="cs-trigger placeholder" aria-haspopup="listbox" aria-expanded="false">
                 <span class="cs-value">Choisir un service</span>
@@ -1235,6 +1235,7 @@
           const val = opt.dataset.value;
           /* update hidden input */
           hidden.value = val;
+          hidden.dispatchEvent(new Event('change'));
           /* update trigger label */
           valueEl.textContent = val;
           trigger.classList.remove('placeholder');
@@ -1271,13 +1272,30 @@
       required.forEach(field => {
         if (!field.value.trim()) {
           valid = false;
-          field.style.borderColor = '#C0392B';
-          field.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.15)';
-          field.addEventListener('input', function once() {
-            this.style.borderColor = '';
-            this.style.boxShadow = '';
-            this.removeEventListener('input', once);
-          });
+          if (field.type === 'hidden') {
+            /* Mettre en évidence le custom-select correspondant */
+            const cs = field.parentElement.querySelector('.custom-select');
+            if (cs) {
+              const trigger = cs.querySelector('.cs-trigger');
+              if (trigger) {
+                trigger.style.borderColor = '#C0392B';
+                trigger.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.15)';
+                const resetTrigger = () => {
+                  trigger.style.borderColor = '';
+                  trigger.style.boxShadow = '';
+                };
+                field.addEventListener('change', resetTrigger, { once: true });
+              }
+            }
+          } else {
+            field.style.borderColor = '#C0392B';
+            field.style.boxShadow = '0 0 0 3px rgba(192,57,43,0.15)';
+            field.addEventListener('input', function once() {
+              this.style.borderColor = '';
+              this.style.boxShadow = '';
+              this.removeEventListener('input', once);
+            });
+          }
         }
       });
       if (!valid) return;
@@ -1574,13 +1592,10 @@
       const rdvDate   = document.getElementById('rdv-date').value;      // YYYY-MM-DD
       const rdvHeure  = document.getElementById('rdv-time').value;      // ex: 18h30
 
-      /* Convertir "18h30" → "18:30:00" pour ISO datetime */
-      const rdvHeureFmt = rdvHeure.replace('h', ':') + ':00';
-      const tzOff = -new Date().getTimezoneOffset();
-      const tzSign = tzOff >= 0 ? '+' : '-';
-      const tzH = String(Math.floor(Math.abs(tzOff) / 60)).padStart(2, '0');
-      const tzM = String(Math.abs(tzOff) % 60).padStart(2, '0');
-      const rdvISO = rdvDate + 'T' + rdvHeureFmt + tzSign + tzH + ':' + tzM; // ex: 2026-06-06T18:30:00-04:00
+      /* Convertir "18h30" → "18:30:00" pour ISO datetime (padding obligatoire) */
+      const [hPart, mPart] = rdvHeure.split('h');
+      const rdvHeureFmt = hPart.padStart(2,'0') + ':' + (mPart||'00').padStart(2,'0') + ':00';
+      const rdvISO = rdvDate + 'T' + rdvHeureFmt; // ex: 2026-06-06T18:30:00 (heure locale, sans timezone — Notion la gère)
 
       /* Remplir l'écran de succès */
       const det = document.getElementById('successDetails');
@@ -1602,37 +1617,44 @@
           </div>`;
       }
 
-      /* Envoyer au webhook Make.com → Notion */
-      fetch(MAKE_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nom,
-          prenom,
-          email,
-          telephone: telephone || '',
-          ville,
-          service,
-          vehicule,
-          adresse,
-          rdv_date:  rdvDate,
-          rdv_heure: rdvHeure,
-          rdv_iso:   rdvISO,
-        })
-      })
-      .then(async res => {
-        if (!res.ok) {
+      /* Envoyer au backend → Notion (avec retry automatique) */
+      const payload = JSON.stringify({
+        nom, prenom, email,
+        telephone: telephone || '',
+        ville, service, vehicule, adresse,
+        rdv_date:  rdvDate,
+        rdv_heure: rdvHeure,
+        rdv_iso:   rdvISO,
+      });
+
+      async function tryBooking(attemptsLeft) {
+        try {
+          const res = await fetch(MAKE_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload,
+          });
+          if (res.ok) {
+            showStepResult('success');
+            return;
+          }
           const body = await res.text().catch(() => '');
           throw new Error('HTTP ' + res.status + ' — ' + body);
+        } catch (err) {
+          console.warn('Booking attempt failed:', err.message, '— remaining:', attemptsLeft - 1);
+          if (attemptsLeft > 1) {
+            /* Retry après 2.5 secondes (laisse le temps à Railway de se réveiller) */
+            await new Promise(r => setTimeout(r, 2500));
+            return tryBooking(attemptsLeft - 1);
+          }
+          console.error('Webhook error (all retries exhausted):', err.message);
+          showStepResult('error');
+          btn.disabled = false;
+          btn.innerHTML = 'Confirmer le rendez-vous <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
         }
-        showStepResult('success');
-      })
-      .catch(err => {
-        console.error('Webhook error:', err.message);
-        showStepResult('error');
-        btn.disabled = false;
-        btn.innerHTML = 'Confirmer le rendez-vous <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
-      });
+      }
+
+      tryBooking(3); // 3 tentatives au total
     });
 
     /* Retry button */
