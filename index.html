@@ -457,17 +457,16 @@
       z-index: 0;
     }
 
-    /* Slideshow photos */
-    .hero-slide {
+    /* Vidéo de fond du hero */
+    .hero-video {
       position: absolute;
       inset: 0;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: opacity 1.4s ease-in-out;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
     }
-    .hero-slide-1 { background-image: url('media/hero-bg.jpg'); opacity: 1; }
-    .hero-slide-2 { background-image: url('media/hero-bg2.jpg'); opacity: 0; }
 
     /* Overlay sombre sur les slides */
     .hero-bg::before {
@@ -2557,17 +2556,14 @@
   <main>
   <section id="hero" aria-label="Section principale">
     <div class="hero-bg" aria-hidden="true">
-      <div class="hero-slide hero-slide-1"></div>
-      <div class="hero-slide hero-slide-2"></div>
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="media/hero-bg.jpg">
+        <source src="media/hero-bg.mp4" type="video/mp4" />
+      </video>
     </div>
     <div class="hero-circle" aria-hidden="true"></div>
 
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge" aria-label="Service premium">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          Service premium
-        </div>
 
         <h1 class="hero-title">
           <span style="font-size:0.65em;font-weight:700;">Votre véhicule mérite</span><br />
