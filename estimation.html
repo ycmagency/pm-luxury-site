@@ -1363,16 +1363,27 @@
     // À partir du 2 juin 2026 : dispo 6j/7 (dimanche fermé)
     const EXTENDED_START = new Date(2026, 5, 2); // June 2, 2026
 
+    // Créneaux 8h00 → 18h00 toutes les 30 minutes (horaire de l'équipe)
+    function buildSlots8to18() {
+      const out = [];
+      for (let min = 8 * 60; min <= 18 * 60; min += 30) {
+        const h = Math.floor(min / 60);
+        const m = min % 60;
+        out.push(h + 'h' + String(m).padStart(2, '0'));
+      }
+      return out; // 8h00, 8h30, ... 17h30, 18h00
+    }
+
     // Créneaux selon le jour
     function getSlotsForDate(date) {
       const dow = date.getDay();
       const isExtended = date >= EXTENDED_START;
       if (isExtended) {
-        // 6j/7 à partir du 2 juin — horaires larges
-        return ['7h00','8h30','10h00','11h30','13h00','14h30','16h00','17h30'];
+        // 6j/7 à partir du 2 juin — horaires 8h–18h
+        return buildSlots8to18();
       }
       if (dow === 1 || dow === 5) return ['18h30','19h30']; // Lundi & Vendredi (après-midi/soir)
-      if (dow === 6) return ['7h00','8h30','10h00','11h30','13h00','14h30','16h00','17h30']; // Samedi 7h–18h
+      if (dow === 6) return buildSlots8to18(); // Samedi 8h–18h
       return [];
     }
 
@@ -1505,7 +1516,7 @@
             const slotMin = slotToMinutes(btn.textContent.trim());
             const blocked = bookedSlots.some(b => {
               const bookedMin = slotToMinutes(b);
-              return slotMin >= bookedMin && slotMin < bookedMin + 120;
+              return slotMin >= bookedMin && slotMin < bookedMin + 150; // bloque 2h30 après chaque RDV
             });
             if (blocked) {
               btn.classList.add('unavailable');
@@ -2008,6 +2019,5 @@
     });
   })();
   </script>
-  <script src="cursor.js"></script>
 </body>
 </html>

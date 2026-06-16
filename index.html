@@ -2561,8 +2561,6 @@
       <div class="hero-slide hero-slide-2"></div>
     </div>
     <div class="hero-circle" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
 
     <div class="container">
       <div class="hero-content">
@@ -2626,14 +2624,6 @@
 
     <!-- Mobile swipe hint -->
     <div class="swipe-hint" aria-hidden="true">
-      <div class="swipe-hand">
-        <svg viewBox="0 0 40 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Doigt -->
-          <rect x="14" y="22" width="12" height="20" rx="6" fill="white" opacity="0.9"/>
-          <!-- Paume -->
-          <ellipse cx="20" cy="40" rx="10" ry="8" fill="white" opacity="0.75"/>
-        </svg>
-      </div>
       <div class="swipe-arrows">
         <svg class="swipe-arrow swipe-arrow-1" viewBox="0 0 24 24" fill="none"><path d="M5 9l7 7 7-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <svg class="swipe-arrow swipe-arrow-2" viewBox="0 0 24 24" fill="none"><path d="M5 9l7 7 7-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3805,8 +3795,8 @@
     <img src="media/logo.png" alt="PM Luxury" />
   </div>
 
-  <!-- Custom cursor -->
-  <script src="cursor.js"></script>
+  <!-- Custom cursor retiré -->
+
 
   <script>
   /* ═══════════════════════════════════════════════════════════════
@@ -3826,55 +3816,7 @@
     });
   })();
 
-  /* ── Particules flottantes dans le hero ── */
-  (function() {
-    const canvas = document.createElement('canvas');
-    canvas.id = 'heroParticles';
-    const hero = document.getElementById('hero');
-    if (!hero) return;
-    hero.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-    let W, H, pts = [];
-    function resize() { W = canvas.width = hero.offsetWidth; H = canvas.height = hero.offsetHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-    for (let i = 0; i < 80; i++) {
-      const big = Math.random() > 0.82;
-      pts.push({
-        x: Math.random()*W, y: Math.random()*H,
-        r: big ? Math.random()*3.5+2 : Math.random()*1.8+0.6,
-        vx: (Math.random()-0.5)*0.3, vy: -(Math.random()*0.4+0.08),
-        a: Math.random(), da: Math.random()*0.005+0.002,
-        color: Math.random()>0.4 ? '74,111,165' : Math.random()>0.5 ? '122,170,208' : '200,220,255',
-        glow: big
-      });
-    }
-    function draw() {
-      ctx.clearRect(0,0,W,H);
-      pts.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.a += p.da;
-        if (p.a > 1 || p.a < 0) p.da *= -1;
-        if (p.y < -10) { p.y = H+10; p.x = Math.random()*W; }
-        const alpha = (p.a * 0.85).toFixed(2);
-        if (p.glow) {
-          /* halo autour des grosses particules */
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-          grad.addColorStop(0, `rgba(${p.color},${alpha})`);
-          grad.addColorStop(1, `rgba(${p.color},0)`);
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI*2);
-          ctx.fillStyle = grad;
-          ctx.fill();
-        }
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(${p.color},${alpha})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
+  /* ── Particules flottantes dans le hero : retirées (effet de bulles bleues désactivé) ── */
 
   /* ── FOMO Countdown (5j, infini) ── */
   (function() {
