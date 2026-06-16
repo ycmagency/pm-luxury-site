@@ -1594,8 +1594,30 @@
 
       /* Convertir "18h30" → "18:30:00" pour ISO datetime (padding obligatoire) */
       const [hPart, mPart] = rdvHeure.split('h');
-      const rdvHeureFmt = hPart.padStart(2,'0') + ':' + (mPart||'00').padStart(2,'0') + ':00';
-      const rdvISO = rdvDate + 'T' + rdvHeureFmt; // ex: 2026-06-06T18:30:00 (heure locale, sans timezone — Notion la gère)
+      const hh = hPart.padStart(2,'0');
+      const mm = (mPart||'00').padStart(2,'0');
+      const rdvHeureFmt = hh + ':' + mm + ':00';
+
+      /* Calcule le décalage horaire de Montréal (America/Toronto) pour CETTE date,
+         pour gérer automatiquement l'heure d'été (-04:00) et l'heure d'hiver (-05:00).
+         Sans ça, Notion interprète l'heure comme de l'UTC et l'affiche 4h trop tôt. */
+      function offsetMontreal(y, mo, d, h, mi) {
+        const utcGuess = Date.UTC(y, mo - 1, d, h, mi, 0);
+        const parts = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/Toronto', hour12: false,
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit',
+        }).formatToParts(new Date(utcGuess)).reduce((a, p) => (a[p.type] = p.value, a), {});
+        const asUTC = Date.UTC(+parts.year, +parts.month - 1, +parts.day,
+          +parts.hour % 24, +parts.minute, +parts.second);
+        const offsetMin = Math.round((asUTC - utcGuess) / 60000); // ex: -240 (été) ou -300 (hiver)
+        const sign = offsetMin <= 0 ? '-' : '+';
+        const abs = Math.abs(offsetMin);
+        return sign + String(Math.floor(abs / 60)).padStart(2,'0') + ':' + String(abs % 60).padStart(2,'0');
+      }
+      const [yy, moo, dd] = rdvDate.split('-').map(Number);
+      const tzOffset = offsetMontreal(yy, moo, dd, parseInt(hh, 10), parseInt(mm, 10));
+      const rdvISO = rdvDate + 'T' + rdvHeureFmt + tzOffset; // ex: 2026-06-06T18:30:00-04:00
 
       /* Remplir l'écran de succès */
       const det = document.getElementById('successDetails');
